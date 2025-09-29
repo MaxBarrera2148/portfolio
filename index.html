@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Header FLIP Morph: Max Barrera → MB</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__inner">
+      <a href="/" class="brand" id="brand" aria-label="Max Barrera">
+        <span class="brand-layer brand-full" id="brandFull">Max Barrera</span>
+        <span class="brand-layer brand-initials" id="brandInitials" aria-hidden="true">
+          <span class="initial" data-key="M">M</span><span class="initial" data-key="B">B</span>
+        </span>
+      </a>
+
+      <nav aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a href="#contact" class="cta">Let’s talk</a>
+    </div>
+  </header>
+
+  <!-- Sentinel: when this passes the top edge, we morph. -->
+  <div id="scrollSentinel" class="scroll-sentinel" aria-hidden="true"></div>
+
+  <section class="hero">
+    <h1>Per-letter FLIP morph: Full name → MB</h1>
+    <p>Scroll a bit; non-kept letters exit with a stagger while the original “M” and “B” fly into the initials’ exact position, then get hidden.</p>
+  </section>
+
+  <main class="content">
+    <div id="work" class="card"><h2>Work</h2><p>Project summaries, case studies, etc.</p></div>
+    <div id="about" class="card"><h2>About</h2><p>Bio and capabilities.</p></div>
+    <div id="contact" class="card"><h2>Contact</h2><p>Email, socials, booking.</p></div>
+    <div class="card"><p>Scroll up/down near the threshold to test stability.</p></div>
+  </main>
+
+  <script defer src="script.js"></script>
+</body>
+</html>
