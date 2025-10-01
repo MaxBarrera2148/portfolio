@@ -3,43 +3,414 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Header FLIP Morph: Max Barrera → MB</title>
+  <title>Max Barrera — Developer, SEO & Digital Marketing Expert</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/sf-ui-text-2" rel="stylesheet">
 </head>
 <body>
+  <!-- Header -->
   <header class="site-header" id="siteHeader">
-    <div class="site-header__inner">
-      <a href="/" class="brand" id="brand" aria-label="Max Barrera">
-        <span class="brand-layer brand-full" id="brandFull">Max Barrera</span>
-        <span class="brand-layer brand-initials" id="brandInitials" aria-hidden="true">
-          <span class="initial" data-key="M">M</span><span class="initial" data-key="B">B</span>
-        </span>
-      </a>
+    <div class="site-header__inner container">
+        <a href="/" class="brand" id="brand" aria-label="Max Barrera">
+            <span class="brand-layer brand-full" id="brandFull">Max Barrera</span>
+          
+            <!-- Final state: MaxB (B is accent). Each char is a target for FLIP -->
+            <span class="brand-layer brand-initials" id="brandInitials" aria-hidden="true">
+              <span class="initial" data-key="Max">Max</span>
+              <span class="initial initial--accent" data-key="B">B</span>
+            </span>
+          </a>
+          
 
-      <nav aria-label="Primary">
-        <a href="#work">Work</a>
+      <nav class="main-nav" aria-label="Primary">
         <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact" class="btn btn-primary btn-sm">Contact</a>
       </nav>
-
-      <a href="#contact" class="cta">Let’s talk</a>
     </div>
   </header>
 
-  <!-- Sentinel: when this passes the top edge, we morph. -->
+  <!-- Scroll sentinel that triggers the morph -->
   <div id="scrollSentinel" class="scroll-sentinel" aria-hidden="true"></div>
 
+  <!-- Hero -->
   <section class="hero">
-    <h1>Per-letter FLIP morph: Full name → MB</h1>
-    <p>Scroll a bit; non-kept letters exit with a stagger while the original “M” and “B” fly into the initials’ exact position, then get hidden.</p>
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <p class="subtitle">Full-Stack Developer & SEO</p>
+        <h1 class="mb-0 mt-0">
+            Agency Quality<br>
+            <span class="text-highlight typewriter">
+              <span id="typed-word" aria-live="polite">Websites</span>
+            </span>
+          </h1>          
+        <div class="hero__ctas">
+          <a class="btn btn-primary" href="#contact">Contact</a>
+          <a
+  class="btn btn-ghost btn-download"
+  href="/files/resume.pdf"
+  download="Max_Barrera_Resume.pdf"
+  type="application/pdf"
+  aria-label="Download Max Barrera resume as PDF"
+  data-analytics-event="resume_download"
+>
+  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 3v10.17l3.59-3.58L17 11l-5 5-5-5 1.41-1.41L11 13.17V3h1zM5 19h14v2H5z"/>
+  </svg>
+  Download Resume
+</a>
+        </div>
+        <div class="hero__social">
+          <a href="#" aria-label="GitHub">        
+            <img
+            src="/images/github.svg"
+            alt="Github logo"
+            loading="lazy"
+          /></a>
+          <a href="#" aria-label="LinkedIn">
+            <img
+            src="/images/linkedin.svg"
+            alt="Github logo"
+            loading="lazy"
+          />
+          </a>
+        </div>
+      </div>
+      <div class="portrait-decoration">
+        <img
+            src="/images/hero-blob.svg"
+            alt="Hero decorative blob"
+            class="hero__blob"
+            loading="lazy"
+        />
+        <div class="hero__media">
+            <img
+              src="/images/dark-shirt.png"
+              alt="Max Barrera headshot placeholder"
+              class="avatar"
+              loading="lazy"
+            />
+          </div>
+      </div>
+    </div>
   </section>
 
-  <main class="content">
-    <div id="work" class="card"><h2>Work</h2><p>Project summaries, case studies, etc.</p></div>
-    <div id="about" class="card"><h2>About</h2><p>Bio and capabilities.</p></div>
-    <div id="contact" class="card"><h2>Contact</h2><p>Email, socials, booking.</p></div>
-    <div class="card"><p>Scroll up/down near the threshold to test stability.</p></div>
-  </main>
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container">
+      <header class="section__head">
+        <h2>About Me</h2>
+        <p>With 10+ years of experience, I combine product thinking, technical execution & data-driven iteration.</p>
+      </header>
+
+      <div class="grid stats">
+        <article class="card stat">
+          <div class="stat__icon">🧩</div>
+          <h3>Development</h3>
+          <p>React / Next / Gatsby / WP — fast, secure, measurable sites.</p>
+        </article>
+        <article class="card stat">
+          <div class="stat__icon">📈</div>
+          <h3>SEO & Optimization</h3>
+          <p>LLM/keyword strategy, IA, technical audits, Core Web Vitals.</p>
+        </article>
+        <article class="card stat">
+          <div class="stat__icon">🎯</div>
+          <h3>Analytics</h3>
+          <p>GA4, GTM, event models, dashboards; test & learn loops.</p>
+        </article>
+        <article class="card stat">
+          <div class="stat__icon">🤝</div>
+          <h3>Digital Marketing</h3>
+          <p>Campaign ops, landing pages, multilingual & governance.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="container">
+      <header class="section__head">
+        <h2>Services</h2>
+        <p>End-to-end support—from discovery to launch to ongoing optimization.</p>
+      </header>
+
+      <div class="grid services">
+        <article class="card service">
+          <div class="service__icon">💻</div>
+          <h3>Web Development</h3>
+          <p>Component systems, headless CMS, accessibility & performance.</p>
+        </article>
+        <article class="card service">
+          <div class="service__icon">🧪</div>
+          <h3>Growth Experiments</h3>
+          <p>A/B tests, funnel analysis, experiment design, CRO.</p>
+        </article>
+        <article class="card service">
+          <div class="service__icon">🔍</div>
+          <h3>SEO & IA Strategy</h3>
+          <p>Site architecture, content briefs, schema, internal linking.</p>
+        </article>
+        <article class="card service">
+          <div class="service__icon">🎛️</div>
+          <h3>Tagging & Tracking</h3>
+          <p>GA4, GTM, consent mode, server-side tagging, QA.</p>
+        </article>
+        <article class="card service">
+          <div class="service__icon">🚀</div>
+          <h3>Migrations & Rebrands</h3>
+          <p>SEO-safe launches: redirects, parity checks, CWV protection.</p>
+        </article>
+        <article class="card service">
+          <div class="service__icon">📣</div>
+          <h3>Campaign Ops</h3>
+          <p>Landing pages, tracking plans, measurement and reporting.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section id="projects" class="section">
+    <div class="container">
+      <header class="section__head">
+        <h2>Featured Projects</h2>
+        <p>Recent work that blends UX, engineering, and growth.</p>
+      </header>
+
+      <div class="grid projects">
+        <article class="card project">
+          <img src="https://placehold.co/640x360/png?text=Dashboard+UI" alt="Project screenshot placeholder" />
+          <div class="project__body">
+            <h3>E-commerce Dashboard</h3>
+            <p>Design system + Next.js storefront with robust analytics.</p>
+            <div class="tags">
+              <span>Next.js</span><span>Design System</span><span>GA4</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project">
+          <img src="https://placehold.co/640x360/png?text=Mobile+App" alt="Project screenshot placeholder" />
+          <div class="project__body">
+            <h3>Finance Mobile App</h3>
+            <p>API integration + growth loop experiments improving retention.</p>
+            <div class="tags">
+              <span>React</span><span>Experimentation</span><span>GTM</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project">
+          <img src="https://placehold.co/640x360/png?text=Analytics+Charts" alt="Project screenshot placeholder" />
+          <div class="project__body">
+            <h3>Analytics Modernization</h3>
+            <p>Event model overhaul, server-side tagging, dashboards.</p>
+            <div class="tags">
+              <span>GA4</span><span>Server GTM</span><span>Data Viz</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+<section id="work" class="section" aria-labelledby="work-title">
+    <div class="container">
+      <header class="section__head">
+        <h2 id="work-title">Work</h2>
+        <p>Selected roles and projects.</p>
+      </header>
+  
+      <ol class="work-list" role="list">
+        <!-- Item 1 -->
+        <li class="work-item">
+          <div class="work__years">
+            <time datetime="2021">2021</time>
+            <span class="sep">—</span>
+            <span class="badge-now" title="Present">Now</span>
+          </div>
+          <div class="work__content">
+            <h3 class="work__company">
+              <a href="#" aria-label="Superculture">Superculture™</a>
+            </h3>
+            <p class="work__role">Product Designer</p>
+            <p class="work__desc">
+              House of brands. Empowering the new guard of culture curators to launch memorable brands.
+            </p>
+          </div>
+        </li>
+  
+        <!-- Item 2 -->
+        <li class="work-item">
+          <div class="work__years">
+            <time datetime="2019">2019</time>
+            <span class="sep">—</span>
+            <time datetime="2021">2021</time>
+          </div>
+          <div class="work__content">
+            <h3 class="work__company"><a href="#">Facebook</a></h3>
+            <p class="work__role">Product Designer</p>
+            <p class="work__desc">
+              Launched 0→1 Facebook Reels (US & Global). Also contributed to Newsfeed & executive initiatives.
+            </p>
+          </div>
+        </li>
+  
+        <!-- Item 3 -->
+        <li class="work-item">
+          <div class="work__years">
+            <time datetime="2018">2018</time>
+            <span class="sep">—</span>
+            <time datetime="2019">2019</time>
+          </div>
+          <div class="work__content">
+            <h3 class="work__company"><a href="#">Italic</a></h3>
+            <p class="work__role">UX Designer</p>
+            <p class="work__desc">
+              Helped build DTC marketplace connecting luxury manufacturers with consumers—no logo premiums.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="section" aria-labelledby="testimonials-title">
+    <div class="container">
+      <header class="section__head">
+        <h2 id="testimonials-title">Testimonials</h2>
+        <p>What clients and collaborators say about working with me.</p>
+      </header>
+  
+      <div class="grid testimonials">
+        <!-- Testimonial 1 -->
+        <article class="card testimonial" itemscope itemtype="https://schema.org/Review">
+          <div class="testimonial__header">
+            <img
+              class="testimonial__avatar"
+              src="images/david.jpg"
+              alt="Headshot of reviewer"
+              loading="lazy"
+              width="96" height="96"
+            />
+            <div class="testimonial__meta">
+              <strong itemprop="author" itemscope itemtype="https://schema.org/Person">
+                <span itemprop="name">David Hemmat</span>
+              </strong>
+              <div class="testimonial__role">
+                <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <span itemprop="jobTitle">CEO</span>
+                </span>
+                <span> · </span>
+                <span itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+                  <span itemprop="name">Blue Coding (& Resolve Digital)</span>
+                </span>
+              </div>
+            </div>
+          </div>
+  
+          <blockquote class="testimonial__quote" itemprop="reviewBody">
+            <p>“Max was great to work with. He provided our team with a level of expertise in digital marketing that was highly valuable to us. Max led efforts related to 
+                inbound lead generation through our website, SEO and online presence, and was able to achieve important results in the improvement of our technical SEO and 
+                general website usability.”</p>
+          </blockquote>
+  
+
+        </article>
+  
+        <!-- Testimonial 2 -->
+        <article class="card testimonial" itemscope itemtype="https://schema.org/Review">
+          <div class="testimonial__header">
+            <img
+              class="testimonial__avatar"
+              src="images/shelley.jpg"
+              alt="Headshot of reviewer"
+              loading="lazy"
+              width="96" height="96"
+            />
+            <div class="testimonial__meta">
+              <strong itemprop="author" itemscope itemtype="https://schema.org/Person">
+                <span itemprop="name">Shelley Mossman</span>
+              </strong>
+              <div class="testimonial__role">
+                <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <span itemprop="jobTitle">Customer Success Manager</span>
+                </span>
+                <span> · </span>
+                <span itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+                  <span itemprop="name">Administrative Software Applications (ASA)</span>
+                </span>
+              </div>
+            </div>
+          </div>
+  
+          <blockquote class="testimonial__quote" itemprop="reviewBody">
+            <p>“The most valuable characteristics I see in Max are his integrity, his work ethic and his perceptive understanding of others’ needs. Coworkers and clients trust his word, they appreciate his willingness to work hard to achieve the right solution,
+                 and they truly benefit from his ability to understand what the client or co-worker needs. I would highly recommend Max to become a productive and valuable member of any business team.”</p>
+          </blockquote>
+  
+
+        </article>
+  
+        <!-- Future testimonials: copy/paste another <article> block like above -->
+      </div>
+  
+      <!-- Optional CTA row under testimonials -->
+      <div class="testimonials__cta">
+        <a class="btn btn-ghost" href="mailto:you@example.com">Request a Reference</a>
+        <a class="btn btn-primary" href="#contact">Work With Me</a>
+      </div>
+    </div>
+  </section>
+  
+
+
+  <!-- Contact / CTA -->
+  <section id="contact" class="section section--dark">
+    <div class="container">
+      <header class="section__head">
+        <h2>Let’s Work Together</h2>
+        <p>Ready to spin up your project? Drop me a line below.</p>
+      </header>
+
+      <form class="contact-form" action="#" method="post">
+        <div class="form-grid">
+          <label>
+            <span>Full name</span>
+            <input type="text" name="name" placeholder="Your name" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+          <label class="full">
+            <span>Subject</span>
+            <input type="text" name="subject" placeholder="What can I help with?" />
+          </label>
+          <label class="full">
+            <span>Your message</span>
+            <textarea name="message" rows="5" placeholder="Tell me about your project"></textarea>
+          </label>
+        </div>
+        <button class="btn btn-primary" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <small>© <span id="year"></span> Max Barrera. All rights reserved.</small>
+    </div>
+  </footer>
 
   <script defer src="script.js"></script>
 </body>
