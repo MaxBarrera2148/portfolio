@@ -168,7 +168,7 @@ for (let i = 0; i < fullText.length; i++) {
   const el = document.getElementById('typed-word');
   if (!el) return;
 
-  const words = ["Websites.", "Landing pages.", "SEO Services.", "Tracking & Analytics." ];
+  const words = ["Marketer.", "Developer.", "SEO." ];
   let wi = 0;          // which word
   let ci = 0;          // character index
   let deleting = false;
@@ -217,4 +217,179 @@ for (let i = 0; i < fullText.length; i++) {
   el.textContent = words[0].charAt(0) === 'W' ? "" : "";
   ci = 0; deleting = false; wi = 0;
   tick();
+})();
+
+
+/* Work details: auto-switch on scroll + switch on hover/focus/click (one at a time) */
+(() => {
+  const items = [...document.querySelectorAll('.work-item[data-detail]')];
+  const stage = document.getElementById('workDetailsStage');
+  if (!items.length || !stage) return;
+
+  const panels = new Map(
+    items.map(i => [i.dataset.detail, document.getElementById(i.dataset.detail)])
+  );
+
+  let activeItem  = null;
+  let activePanel = null;
+  let hoverLockUntil = 0; // ms timestamp – prevents scroll from overriding an immediate user hover
+
+  function naturalHeight(panel) {
+    if (!panel) return 0;
+    // Measure the panel’s natural height even if it's absolutely positioned
+    const prev = {
+      position: panel.style.position,
+      visibility: panel.style.visibility,
+      inset: panel.style.inset,
+      opacity: panel.style.opacity,
+      transform: panel.style.transform,
+      pointerEvents: panel.style.pointerEvents,
+    };
+    panel.style.position = 'static';
+    panel.style.visibility = 'hidden';
+    panel.style.inset = 'auto';
+    panel.style.opacity = '1';
+    panel.style.transform = 'none';
+    panel.style.pointerEvents = 'none';
+    const h = panel.getBoundingClientRect().height; // sub-pixel accurate
+    // Revert
+    panel.style.position = prev.position;
+    panel.style.visibility = prev.visibility;
+    panel.style.inset = prev.inset;
+    panel.style.opacity = prev.opacity;
+    panel.style.transform = prev.transform;
+    panel.style.pointerEvents = prev.pointerEvents;
+    return h;
+  }
+
+  function setActive(item, {fromUser = false, updateHash = false} = {}) {
+    if (!item || item === activeItem) return;
+
+    // Left list state
+    items.forEach(i => {
+      const on = (i === item);
+      i.classList.toggle('active', on);
+      i.setAttribute('aria-current', on ? 'true' : 'false');
+    });
+
+    const nextId = item.dataset.detail;
+    const next   = panels.get(nextId);
+    if (!next) return;
+
+    const prev = activePanel || panels.get(items[0].dataset.detail);
+
+    // Animate stage height (prevents jumps)
+    const fromH = prev ? naturalHeight(prev) : 0;
+    const toH   = naturalHeight(next);
+    stage.style.height = fromH + 'px';
+    // Force reflow then animate to new height
+    stage.getBoundingClientRect();
+    stage.style.height = toH + 'px';
+
+    // Toggle one visible card
+    if (prev && prev !== next) {
+      prev.classList.remove('is-active', 'just-activated');
+      prev.setAttribute('aria-hidden', 'true');
+    }
+    next.classList.add('is-active', 'just-activated');
+    next.setAttribute('aria-hidden', 'false');
+    setTimeout(() => next.classList.remove('just-activated'), 500);
+
+    activeItem  = item;
+    activePanel = next;
+
+    if (fromUser) hoverLockUntil = Date.now() + 900;
+    if (updateHash) history.replaceState(null, '', `#${nextId}`);
+  }
+
+  // Choose row closest to ~45% viewport height
+  function pickByScroll() {
+    const center = window.innerHeight * 0.45;
+    let best = null, bestDist = Infinity;
+    for (const item of items) {
+      const r = item.getBoundingClientRect();
+      if (r.bottom <= 0 || r.top >= window.innerHeight) continue;
+      const mid = r.top + r.height / 2;
+      const d = Math.abs(mid - center);
+      if (d < bestDist) { bestDist = d; best = item; }
+    }
+    return best || items[0];
+  }
+
+  // Scroll/resize (rAF-throttled)
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      if (Date.now() < hoverLockUntil) { ticking = false; return; }
+      setActive(pickByScroll(), {updateHash: true});
+      ticking = false;
+    });
+  }
+
+  // Hover/focus/click switch immediately
+  items.forEach(item => {
+    item.addEventListener('mouseenter', () => setActive(item, {fromUser: true, updateHash: true}));
+    item.addEventListener('focus',      () => setActive(item, {fromUser: true, updateHash: true}));
+    item.addEventListener('click',      () => setActive(item, {fromUser: true, updateHash: true}));
+  });
+
+  // Initialize (fix “first never shows” + initial height)
+  function init() {
+    // If near the top of the page, start on the first item even if center is lower
+    const nearTop = (window.scrollY || 0) < 120;
+    const hash = location.hash.slice(1);
+    const fromHash = hash && items.find(i => i.dataset.detail === hash);
+    const startItem = fromHash || (nearTop ? items[0] : pickByScroll());
+
+    setActive(startItem, {updateHash: !!fromHash});
+
+    // After fonts load, recompute stage height so it matches final text metrics
+    const refresh = () => { if (activePanel) stage.style.height = naturalHeight(activePanel) + 'px'; };
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(refresh).catch(refresh);
+    } else {
+      setTimeout(refresh, 100);
+    }
+  }
+
+  window.addEventListener('load', init);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+})();
+
+/* Horizontal shelf: wheel-to-horizontal + click/drag-to-pan */
+(() => {
+  const shelf = document.getElementById('booksShelf');
+  if (!shelf) return;
+
+  // Convert vertical wheel to horizontal pan (trackpads feel natural)
+  shelf.addEventListener('wheel', (e) => {
+    const absY = Math.abs(e.deltaY);
+    const absX = Math.abs(e.deltaX);
+    if (absY > absX) { // mostly vertical gesture → map to x
+      e.preventDefault();
+      shelf.scrollLeft += e.deltaY;
+    }
+  }, { passive: false });
+
+  // Click & drag (desktop)
+  let dragging = false, startX = 0, startLeft = 0;
+  shelf.addEventListener('mousedown', (e) => {
+    dragging = true; startX = e.clientX; startLeft = shelf.scrollLeft;
+    shelf.classList.add('dragging');
+  });
+  window.addEventListener('mouseup', () => { dragging = false; shelf.classList.remove('dragging'); });
+  window.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    shelf.scrollLeft = startLeft - dx * 1.2;
+  });
+
+  // Keyboard nudge when shelf focused
+  shelf.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') shelf.scrollBy({ left: 240, behavior: 'smooth' });
+    if (e.key === 'ArrowLeft')  shelf.scrollBy({ left: -240, behavior: 'smooth' });
+  });
 })();

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Max Barrera</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="about-page">
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__inner container">
+        <a href="/" class="brand" id="brand" aria-label="Max Barrera">
+            <span class="brand-layer brand-full" id="brandFull">Max Barrera</span>
+          
+            <!-- Final state: MaxB (B is accent). Each char is a target for FLIP -->
+            <span class="brand-layer brand-initials" id="brandInitials" aria-hidden="true">
+              <span class="initial" data-key="Max">Max</span>
+              <span class="initial initial--accent" data-key="B">B</span>.
+            </span>
+          </a>
+          
+
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#recommendations">Recommendations</a>
+        <a href="#contact" class="btn btn-primary btn-sm">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Scroll sentinel that triggers the morph -->
+  <div id="scrollSentinel" class="scroll-sentinel" aria-hidden="true"></div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+       <h1 >  About Me.</h1>       
+       <p>I grew up in New England (I’m still a loyal Patriots fan) and now live in Cancún, Mexico, where I split my time between building websites, exploring new technologies, and enjoying life near the beach.</p>
+       <br>
+       <p>I’ve always been fascinated by how design, performance, and data come together to solve real problems. Whether I’m improving site speed, refining a user journey, or testing something new in the code, I enjoy the process of making things work better — step by step, iteration by iteration.</p>  
+       <br>
+       <p>Outside of work, I like snorkeling, visiting Mayan ruins, and exploring the jungles of the Yucatán with my family. I’ve found that curiosity drives everything I do — it’s what got me into web development, and it’s what keeps me learning and experimenting every day.</p>
+        <div class="hero__social">
+            <a href="#" aria-label="GitHub">        
+              <img
+              src="/images/github.svg"
+              alt="Github logo"
+              loading="lazy"
+            /></a>
+            <a href="#" aria-label="LinkedIn">
+              <img
+              src="/images/linkedin.svg"
+              alt="Github logo"
+              loading="lazy"
+            />
+            </a>
+          </div>
+
+      </div>
+      <div class="portrait-decoration">
+       
+      
+        <div class="hero__media">
+            <img
+              src="/images/pyramid.png"
+              alt="Max Barrera headshot placeholder"
+              class="avatar"
+              loading="lazy"
+            />
+          </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="about__grid container">
+    <div class="about-image">
+        <img
+        src="/images/pyramid.png"
+        alt="Max Barrera in a suit"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+   
+    <div class="about-text">
+        <h2 class="h1" id="about"><br>About Me.</h2>
+        <p>I’m Max Barrera, a marketer, developer, and SEO specialist who loves helping companies make the most of their websites. I grew up in New England (I’m still a loyal Patriots fan) and now live in Cancún, Mexico, where I split my time between building websites, exploring new technologies, and enjoying life near the beach.</p>
+        <br>
+        <p>I’ve always been fascinated by how design, performance, and data come together to solve real problems. Whether I’m improving site speed, refining a user journey, or testing something new in the code, I enjoy the process of making things work better — step by step, iteration by iteration.</p>  
+        <br>
+        <p>Outside of work, I like snorkeling, visiting Mayan ruins, and exploring the jungles of the Yucatán with my family. I’ve found that curiosity drives everything I do — it’s what got me into web development, and it’s what keeps me learning and experimenting every day.</p>
+      </div>
+    </section>
+
+ 
+
+  <script src="script.js" defer></script>
+</body>
+</html>
