@@ -393,3 +393,37 @@ for (let i = 0; i < fullText.length; i++) {
     if (e.key === 'ArrowLeft')  shelf.scrollBy({ left: -240, behavior: 'smooth' });
   });
 })();
+
+
+
+(function startCancunClock(){
+  const tz = 'America/Cancun';
+  const elTime = document.getElementById('cancun-time');
+  const elTz   = document.getElementById('cancun-tz');
+
+  // Show timezone abbreviation (e.g., EST)
+  try {
+    const tzParts = new Intl.DateTimeFormat('en-US', {
+      timeZone: tz, timeZoneName: 'short'
+    }).formatToParts(new Date());
+    const abbr = tzParts.find(p => p.type === 'timeZoneName')?.value || '';
+    elTz.textContent = abbr ? `(${abbr})` : '';
+  } catch(_) { /* no-op */ }
+
+  function format(now){
+    return new Intl.DateTimeFormat('en-US', {
+      timeZone: tz,
+      hour12: false,
+      hour: '2-digit', minute: '2-digit', second: '2-digit'
+    }).format(now);
+  }
+
+  // Align updates to the exact second to avoid drift
+  function tick(){
+    const now = Date.now();
+    elTime.textContent = format(new Date(now));
+    const msToNextSecond = 1000 - (now % 1000);
+    setTimeout(tick, msToNextSecond + 5);
+  }
+  tick();
+})();
