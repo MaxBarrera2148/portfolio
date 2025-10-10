@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume — Max Barrera</title>
+  <link rel="stylesheet" href="resume.css" />
+  <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">       
+</head>
+<body>
+
+  <div class="resume">
+    <!-- LEFT: sticky sidebar -->
+    <aside class="sidebar" aria-label="Section navigation">
+      <header class="idcard">
+        <h1 class="name">Max Barrera</h1>
+        <p class="role">Full-Stack Developer · SEO & Analytics</p>
+        <p class="blurb">I build measurable, fast, accessible web experiences and the growth systems around them.</p>
+      </header>
+
+      <!-- Nav (companies + certificates) -->
+      <nav class="sidenav" id="sidenav">
+        <div class="nav__indicator" aria-hidden="true"></div>
+        <ul class="nav__list" role="list">
+          <li class="nav__item"><a class="nav__link" href="#rootstock">RootstockLabs</a></li>
+          <li class="nav__item"><a class="nav__link" href="#bluecoding">Blue Coding</a></li>
+          <li class="nav__item"><a class="nav__link" href="#predictable">Predictable Revenue</a></li>
+          <li class="nav__item"><a class="nav__link" href="#certs">Certificates</a></li>
+        </ul>
+      </nav>
+
+      <footer class="sidefoot">
+        <a class="btn btn-ghost" href="/files/Max_Barrera_Resume.pdf" download>Download PDF</a>
+      </footer>
+    </aside>
+
+    <!-- RIGHT: scrolling content -->
+    <main class="content" id="content" tabindex="-1">
+      <!-- Company 1 -->
+      <section id="rootstock" class="section">
+        <header class="section__head">
+          <div class="meta">
+            <p class="years"><time datetime="2021-09">2021</time> — <time datetime="2025-09">Present</time></p>
+            <h2 class="company">RootstockLabs</h2>
+            <p class="title">Senior Webmaster · SEO & Web Strategy</p>
+          </div>
+        </header>
+
+        <div class="section__body">
+          <p>Led a multi-site ecosystem and rebrands; launched an award-winning developer portal, implemented GA4/GTM frameworks, and scaled internationalization (Crowdin). Increased organic traffic <strong>75%+</strong> while improving accessibility, performance, and compliance (CMP/Consent Mode).</p>
+          <ul class="bullets">
+            <li>Architected analytics event model with consent-aware capture and CRO dashboards.</li>
+            <li>WCAG upgrades, security headers, and Core Web Vitals improvements.</li>
+            <li>Programmatic SEO + dev docs IA for developer adoption.</li>
+          </ul>
+          <ul class="tags">
+            <li>Next.js</li><li>GA4</li><li>GTM</li><li>SEO</li><li>i18n</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Company 2 -->
+      <section id="bluecoding" class="section">
+        <header class="section__head">
+          <div class="meta">
+            <p class="years"><time datetime="2020-01">2020</time> — <time datetime="2021-09">2021</time></p>
+            <h2 class="company">Blue Coding</h2>
+            <p class="title">Marketing Coordinator</p>
+          </div>
+        </header>
+
+        <div class="section__body">
+          <p>Owned SEO/content and site improvements; increased estimated organic traffic value to <strong>$7K+/mo</strong> (Ahrefs). Supported inbound and paid lead gen with clear performance reporting.</p>
+          <ul class="bullets">
+            <li>Content program + technical SEO (schema, internal linking, speed).</li>
+            <li>Google Ads (PPC & Display) with audience testing and landing page CRO.</li>
+            <li>HubSpot workflows and attribution for MQL → SQL tracking.</li>
+          </ul>
+          <ul class="tags">
+            <li>SEO</li><li>Content</li><li>Google Ads</li><li>HubSpot</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Company 3 -->
+      <section id="predictable" class="section">
+        <header class="section__head">
+          <div class="meta">
+            <p class="years"><time datetime="2018-11">2018</time> — <time datetime="2020-01">2020</time></p>
+            <h2 class="company">Predictable Revenue</h2>
+            <p class="title">Marketing Coordinator</p>
+          </div>
+        </header>
+
+        <div class="section__body">
+          <p>Modernized stack & performance: core site score from the <strong>low-60s → high-90s</strong>. Shipped a CRM-integrated chatbot and improved deliverability (SPF/DKIM/DMARC).</p>
+          <ul class="bullets">
+            <li>Technical audit → fixes (rendering, caching, image pipeline, JS bloat).</li>
+            <li>Outbound enablement with targeted prospecting lists.</li>
+            <li>Email authentication and inbox placement improvements.</li>
+          </ul>
+          <ul class="tags">
+            <li>Performance</li><li>Chatbot</li><li>Deliverability</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Certificates -->
+      <section id="certs" class="section">
+        <header class="section__head">
+          <div class="meta">
+            <h2 class="company">Certificates</h2>
+            <p class="title">Selected credentials & coursework</p>
+          </div>
+        </header>
+
+        <div class="section__body">
+          <ul class="certs">
+            <li><strong>Google Analytics 4</strong> — Advanced</li>
+            <li><strong>Tag Manager</strong> — Server-side tagging foundations</li>
+            <li><strong>Technical SEO</strong> — Audits & site performance</li>
+            <li><strong>Accessibility</strong> — WCAG & best practices</li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="endpad" aria-hidden="true"></footer>
+    </main>
+  </div>
+
+  <script src="resume.js" defer></script>
+</body>
+</html>
