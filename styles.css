@@ -3,9 +3,11 @@
     --bg-dark: #0f1320;
     --card: #ffffff;
     --text:  rgba(0,0,0,.8);
-    --faint: rgba(0,0,0,.22);
+    --faint: #A4E0DF;
+
+    --lt-green: #f0fafa;
     --muted: rgba(0,0,0,.5);
-    --accent: #0e6ba8;      /* low-fi indigo */
+    --accent: #2F8987;      /* low-fi indigo */
     --accent-2: #0e6ba8 ;    /* green accent for tags */
     --border: #00072d;
   
@@ -275,8 +277,9 @@
   .hero__social a{ text-decoration:none; color: inherit; }
   .hero__media{ display:flex; justify-content:flex-end; }
   .avatar{
-    width: 385px; height: 425px; border-radius: 2%;
+    width: 464px; height: 425px; border-radius: 2%;
     object-fit: cover;
+    object-position: 70% 20%;
     box-shadow: var(--shadow);
     background: #fff;
   }
@@ -316,8 +319,13 @@
     align-items: flex-end;
   }
 
-  .stat {
+  .xp__org {
+    font-weight: 600;
     color: var(--accent);
+  }
+
+  .stat {
+    color: var(--faint);
   }
   .stats{ grid-template-columns: repeat(4, 1fr); }
   .services{ grid-template-columns: repeat(3, 1fr); }
@@ -534,7 +542,7 @@
   .industry-tag {
     padding: 8px 16px;
     border-radius: .5rem;
-    background-color: rgba(0,0,0,0.06);
+    background-color: var(--lt-green);
     margin-right: 8px;
     white-space: nowrap;
   }
@@ -936,6 +944,28 @@
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
+
+
+
+/* Reveal-on-scroll (direction aware) */
+.reveal{
+    /* DOWN by default; JS toggles [data-scroll-dir] on <html> */
+    --dir: 1;                          /* 1=down, -1=up */
+    opacity: 0;
+    transform: translateY(calc(var(--dir) * 18px));
+    transition:
+      opacity 460ms cubic-bezier(.2,.6,.2,1) var(--delay, 0ms),
+      transform 460ms cubic-bezier(.2,.6,.2,1) var(--delay, 0ms);
+    will-change: opacity, transform;
+  }
+  html[data-scroll-dir="up"] .reveal { --dir: -1; }  /* enter from above */
+  .reveal.in{ opacity: 1; transform: none; }
+  
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+  }
+  
+
 
   
   /* ---- Footer ---- */
