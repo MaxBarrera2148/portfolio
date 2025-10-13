@@ -429,28 +429,56 @@ for (let i = 0; i < fullText.length; i++) {
 })();
 
 (() => {
+  // 1) Track scroll direction globally for CSS
+  let lastY = window.scrollY;
+  const setDir = () => {
+    const y = window.scrollY;
+    document.documentElement.setAttribute('data-scroll-dir', y > lastY ? 'down' : 'up');
+    lastY = y;
+  };
+  setDir();
+  window.addEventListener('scroll', setDir, { passive: true });
+
+  // 2) Observe each xp-preview independently
   const sections = [...document.querySelectorAll('.xp-preview')];
   if (!sections.length) return;
 
-  const baseOptions = { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.12 };
+  const options = { root: null, rootMargin: '0px 0px -12% 0px', threshold: 0.14 };
 
   sections.forEach(section => {
     const items = [...section.querySelectorAll('.reveal')];
     if (!items.length) return;
 
-    // Stagger step can be customized per section: <section class="xp-preview" data-stagger="140">
-    const step = Number(section.dataset.stagger) || 120;
+    const step = Number(section.dataset.stagger) || 120; // ms between items
 
-    const io = new IntersectionObserver((entries, observer) => {
-      const entering = entries.filter(e => e.isIntersecting)
-        .sort((a, b) => (a.target.compareDocumentPosition(b.target) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1);
+    const io = new IntersectionObserver((entries) => {
+      // Split entering vs leaving
+      const entering = entries.filter(e => e.isIntersecting);
+      const leaving  = entries.filter(e => !e.isIntersecting);
 
-      entering.forEach((e, i) => {
-        e.target.style.setProperty('--delay', (i * step) + 'ms');
-        e.target.classList.add('in');
-        observer.unobserve(e.target); // one-time reveal
+      // Apply stagger order based on scroll direction
+      const dir = document.documentElement.getAttribute('data-scroll-dir') || 'down';
+
+      // Sort by document order so stagger is consistent
+      let ordered = entering.sort((a, b) =>
+        (a.target.compareDocumentPosition(b.target) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1
+      );
+
+      if (dir === 'up') ordered.reverse(); // reverse the cascade when scrolling up
+
+      ordered.forEach((e, i) => {
+        const el = e.target;
+        el.style.setProperty('--delay', (i * step) + 'ms');
+        el.classList.add('in');
       });
-    }, baseOptions);
+
+      // When leaving, remove 'in' (animation reverses automatically)
+      leaving.forEach(e => {
+        const el = e.target;
+        el.style.removeProperty('--delay');
+        el.classList.remove('in');
+      });
+    }, options);
 
     items.forEach(el => io.observe(el));
   });
