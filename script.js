@@ -429,30 +429,29 @@ for (let i = 0; i < fullText.length; i++) {
 })();
 
 (() => {
-  const root = document.getElementById('resume-preview');
-  if (!root) return;
+  const sections = [...document.querySelectorAll('.xp-preview')];
+  if (!sections.length) return;
 
-  const items = [...root.querySelectorAll('.reveal')];
+  const baseOptions = { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.12 };
 
-  // IntersectionObserver with a generous rootMargin so it triggers in time
-  const io = new IntersectionObserver((entries) => {
-    // Sort entering items by document order for consistent staggering
-    const entering = entries
-      .filter(e => e.isIntersecting)
-      .sort((a, b) => (a.target.compareDocumentPosition(b.target) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1);
+  sections.forEach(section => {
+    const items = [...section.querySelectorAll('.reveal')];
+    if (!items.length) return;
 
-    entering.forEach((e, i) => {
-      const el = e.target;
-      // Stagger per batch (120ms steps). If you want a different step, change here.
-      el.style.setProperty('--delay', (i * 120) + 'ms');
-      el.classList.add('in');
-      io.unobserve(el); // reveal once
-    });
-  }, {
-    root: null,
-    rootMargin: '0px 0px -10% 0px',
-    threshold: 0.12
+    // Stagger step can be customized per section: <section class="xp-preview" data-stagger="140">
+    const step = Number(section.dataset.stagger) || 120;
+
+    const io = new IntersectionObserver((entries, observer) => {
+      const entering = entries.filter(e => e.isIntersecting)
+        .sort((a, b) => (a.target.compareDocumentPosition(b.target) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1);
+
+      entering.forEach((e, i) => {
+        e.target.style.setProperty('--delay', (i * step) + 'ms');
+        e.target.classList.add('in');
+        observer.unobserve(e.target); // one-time reveal
+      });
+    }, baseOptions);
+
+    items.forEach(el => io.observe(el));
   });
-
-  items.forEach(el => io.observe(el));
 })();
