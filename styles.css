@@ -97,6 +97,10 @@
     line-height: 1.75rem;      
     color: rgba(0,0,0,.8);                                  
 }
+
+.accent {
+    color: var(--accent);
+}
   
   /* Utilities */
   .container{
@@ -325,7 +329,8 @@
   }
 
   .stat {
-    color: var(--faint);
+    color: var(--accent);
+    font-weight: 900 !important;
   }
   .stats{ grid-template-columns: repeat(4, 1fr); }
   .services{ grid-template-columns: repeat(3, 1fr); }
