@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
   <link href="https://fonts.cdnfonts.com/css/sf-ui-text-2" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">             
 </head>
 <body>
   <!-- Header -->
@@ -18,15 +19,14 @@
             <!-- Final state: MaxB (B is accent). Each char is a target for FLIP -->
             <span class="brand-layer brand-initials" id="brandInitials" aria-hidden="true">
               <span class="initial" data-key="Max">Max</span>
-              <span class="initial initial--accent" data-key="B">B</span>
+              <span class="initial initial--accent" data-key="B">B</span>.
             </span>
           </a>
           
 
       <nav class="main-nav" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Resume</a>
         <a href="#contact" class="btn btn-primary btn-sm">Contact</a>
       </nav>
     </div>
@@ -39,143 +39,240 @@
   <section class="hero">
     <div class="container hero__grid">
       <div class="hero__copy">
-        <p class="subtitle">Full-Stack Developer & SEO</p>
-        <h1 class="mb-0 mt-0">
-            Agency Quality<br>
-            <span class="text-highlight typewriter">
-              <span id="typed-word" aria-live="polite">Websites</span>
-            </span>
-          </h1>          
-        <div class="hero__ctas">
-          <a class="btn btn-primary" href="#contact">Contact</a>
-          <a
-  class="btn btn-ghost btn-download"
-  href="/files/resume.pdf"
-  download="Max_Barrera_Resume.pdf"
-  type="application/pdf"
-  aria-label="Download Max Barrera resume as PDF"
-  data-analytics-event="resume_download"
->
-  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M12 3v10.17l3.59-3.58L17 11l-5 5-5-5 1.41-1.41L11 13.17V3h1zM5 19h14v2H5z"/>
-  </svg>
-  Download Resume
-</a>
-        </div>
+       <h1 ><span class="faint">Hello,</span> <br> I'm Max.</h1>       
+        <p>I’m a marketer and developer with strong experience in SEO and UX. I help companies build elegant, intuitive, and measurable websites that solve complex business challenges. </p>
         <div class="hero__social">
-          <a href="#" aria-label="GitHub">        
-            <img
-            src="/images/github.svg"
-            alt="Github logo"
-            loading="lazy"
-          /></a>
-          <a href="#" aria-label="LinkedIn">
-            <img
-            src="/images/linkedin.svg"
-            alt="Github logo"
-            loading="lazy"
-          />
-          </a>
-        </div>
+            <a href="#" aria-label="GitHub">        
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.5312 0H2.34375C1.0498 0 0 1.0498 0 2.34375V19.5312C0 20.8252 1.0498 21.875 2.34375 21.875H19.5312C20.8252 21.875 21.875 20.8252 21.875 19.5312V2.34375C21.875 1.0498 20.8252 0 19.5312 0ZM13.54 18.7354C13.1299 18.8086 12.9785 18.5547 12.9785 18.3447C12.9785 18.0811 12.9883 16.7334 12.9883 15.6445C12.9883 14.8828 12.7344 14.3994 12.4365 14.1455C14.2432 13.9453 16.1475 13.6963 16.1475 10.5762C16.1475 9.6875 15.8301 9.24316 15.3125 8.67188C15.3955 8.46191 15.6738 7.59766 15.2295 6.47461C14.5508 6.26465 12.998 7.34863 12.998 7.34863C12.3535 7.16797 11.6553 7.0752 10.9668 7.0752C10.2783 7.0752 9.58008 7.16797 8.93555 7.34863C8.93555 7.34863 7.38281 6.26465 6.7041 6.47461C6.25977 7.59277 6.5332 8.45703 6.62109 8.67188C6.10352 9.24316 5.85938 9.6875 5.85938 10.5762C5.85938 13.6816 7.68066 13.9453 9.4873 14.1455C9.25293 14.3555 9.04297 14.7168 8.96973 15.2344C8.50586 15.4443 7.31934 15.8057 6.61133 14.5557C6.16699 13.7842 5.36621 13.7207 5.36621 13.7207C4.5752 13.7109 5.3125 14.2188 5.3125 14.2188C5.83984 14.4629 6.21094 15.4004 6.21094 15.4004C6.68457 16.8506 8.9502 16.3623 8.9502 16.3623C8.9502 17.041 8.95996 18.1445 8.95996 18.3447C8.95996 18.5547 8.81348 18.8086 8.39844 18.7354C5.17578 17.6563 2.91992 14.5898 2.91992 11.0059C2.91992 6.52344 6.34766 3.12012 10.8301 3.12012C15.3125 3.12012 18.9453 6.52344 18.9453 11.0059C18.9502 14.5898 16.7627 17.6611 13.54 18.7354ZM8.75 15.752C8.65723 15.7715 8.56934 15.7324 8.55957 15.6689C8.5498 15.5957 8.61328 15.5322 8.70605 15.5127C8.79883 15.5029 8.88672 15.542 8.89648 15.6055C8.91113 15.6689 8.84766 15.7324 8.75 15.752ZM8.28613 15.708C8.28613 15.7715 8.21289 15.8252 8.11523 15.8252C8.00781 15.835 7.93457 15.7813 7.93457 15.708C7.93457 15.6445 8.00781 15.5908 8.10547 15.5908C8.19824 15.5811 8.28613 15.6348 8.28613 15.708ZM7.61719 15.6543C7.59766 15.7178 7.5 15.7471 7.41699 15.7178C7.32422 15.6982 7.26074 15.625 7.28027 15.5615C7.2998 15.498 7.39746 15.4688 7.48047 15.4883C7.57812 15.5176 7.6416 15.5908 7.61719 15.6543ZM7.0166 15.3906C6.97266 15.4443 6.87988 15.4346 6.80664 15.3613C6.7334 15.2979 6.71387 15.2051 6.7627 15.1611C6.80664 15.1074 6.89941 15.1172 6.97266 15.1904C7.03613 15.2539 7.06055 15.3516 7.0166 15.3906ZM6.57227 14.9463C6.52832 14.9756 6.44531 14.9463 6.3916 14.873C6.33789 14.7998 6.33789 14.7168 6.3916 14.6826C6.44531 14.6387 6.52832 14.6729 6.57227 14.7461C6.62598 14.8193 6.62598 14.9072 6.57227 14.9463ZM6.25488 14.4727C6.21094 14.5166 6.1377 14.4922 6.08398 14.4434C6.03027 14.3799 6.02051 14.3066 6.06445 14.2725C6.1084 14.2285 6.18164 14.2529 6.23535 14.3018C6.28906 14.3652 6.29883 14.4385 6.25488 14.4727ZM5.92773 14.1113C5.9082 14.1553 5.84473 14.165 5.79102 14.1309C5.72754 14.1016 5.69824 14.0479 5.71777 14.0039C5.7373 13.9746 5.79102 13.96 5.85449 13.9844C5.91797 14.0186 5.94727 14.0723 5.92773 14.1113Z" fill="black"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.875 0.5625H2.12012C1.26074 0.5625 0.5625 1.27051 0.5625 2.13965V20.8604C0.5625 21.7295 1.26074 22.4375 2.12012 22.4375H20.875C21.7344 22.4375 22.4375 21.7295 22.4375 20.8604V2.13965C22.4375 1.27051 21.7344 0.5625 20.875 0.5625ZM7.17383 19.3125H3.93164V8.87305H7.17871V19.3125H7.17383ZM5.55273 7.44727C4.5127 7.44727 3.67285 6.60254 3.67285 5.56738C3.67285 4.53223 4.5127 3.6875 5.55273 3.6875C6.58789 3.6875 7.43262 4.53223 7.43262 5.56738C7.43262 6.60742 6.59277 7.44727 5.55273 7.44727ZM19.3271 19.3125H16.085V14.2344C16.085 13.0234 16.0605 11.4658 14.4004 11.4658C12.7109 11.4658 12.4521 12.7842 12.4521 14.1465V19.3125H9.20996V8.87305H12.3203V10.2988H12.3643C12.7988 9.47852 13.8584 8.61426 15.4355 8.61426C18.7168 8.61426 19.3271 10.7773 19.3271 13.5898V19.3125Z" fill="black"/>
+                </svg>
+            </a>
+          </div>
+
       </div>
       <div class="portrait-decoration">
-        <img
-            src="/images/hero-blob.svg"
-            alt="Hero decorative blob"
-            class="hero__blob"
-            loading="lazy"
-        />
+       
+      
         <div class="hero__media">
             <img
-              src="/images/dark-shirt.png"
+              src="/images/europe.png"
               alt="Max Barrera headshot placeholder"
               class="avatar"
               loading="lazy"
             />
           </div>
+
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about" class="section">
+  <!--  About
+
+  <section class="about__grid container">
+    <div class="about-image">
+        <img
+        src="/images/max-suit.png"
+        alt="Max Barrera in a suit"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+   
+    <div class="about-text">
+        <h2 class="h1 faint" id="about">About Me</h2>
+        <p>I’m a marketer, full-stack developer, and SEO specialist. Over the past seven years, I’ve worked across web development, analytics, and optimization, focusing on how design, performance, and data all intersect to solve real business challenges.</p>
+        <br>
+        <p>I grew up in New England, where I developed an early love for technology and problem-solving. These days, I live in Cancún, Mexico, where I balance client work with time spent near the ocean — whether that’s swimming, gardening, or working on side projects that keep my skills sharp.</p>  
+        <br>
+        <p>I’m motivated by continuous improvement. Whether I’m refining a website’s user journey, tightening SEO performance, or experimenting with new front-end frameworks, I enjoy the process of iteration — testing, learning, and pushing digital experiences to perform better than before.</p>
+        <br>
+        <p>When I’m not optimizing websites, you’ll probably find me reading about design systems, experimenting with new tools, or exploring local markets looking for the next great meal.</p>
+      </div>
+    </section>
+ -->
+ <section id="why-work-with-me" aria-labelledby="wwm-title">
+
+<div class="container">
+    <h2 class="h2 why-work-title"><span class="faint">Are We A</span> <br> Good Fit?</h2>
+    <div class="grid" role="list">
+      <!-- Card 1 -->
+      <article class="gf-card" role="listitem">
+        <h3>Fully Remote</h3>
+        <p>
+            I was born and raised in the US, but relocated to Cancun, Mexico, over a decade ago.</p>
+              <p> Since then I’ve worked remotely with US and globally based companies. I’m a dual citizen, fluent in both English & Spanish (English being my first language).
+        </p>
+        <br>
+        <div class="local-time" aria-live="polite">
+            <span class="time-label">Local time in Cancun:</span>
+            <time id="cancun-time" class="clock">--:--:--</time>
+            <span id="cancun-tz" class="tz"></span>
+          </div>
+        <br>
+        
+
+        <div class="stat">
+          10+ Years<span class="label"> Working Remotely</span>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="gf-card" role="listitem">
+        <h3>Full-Stack Development</h3>
+        <p>
+            I’m a full-stack developer with more than five years of experience managing CI/CD pipelines, guiding projects from development through deployment. My main focus is front-end development and technical SEO. I build high-performing, scalable sites using frameworks like React, Next.js, and Gatsby, often paired with WordPress or other CMS platforms.
+        </p>
+        <div class="stat">
+          5+ Years<span class="label">Full-stack Experience</span>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="gf-card" role="listitem">
+        <h3>Repeatable Process</h3>
+        <p>
+            My approach is rooted in experimentation and iteration. Each project begins with a clear understanding of business goals, audience, and technical requirements. I design and build solutions that balance performance, usability, and measurable outcomes. At every stage, I test, measure, and refine, whether improving Core Web Vitals, optimizing user flows, or enhancing conversion tracking. 
+        </p>
+        <div class="stat">
+          50+ <span class="label">Sites Built & Optimized</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+ 
+<section id="resume-preview" class="xp-preview" aria-labelledby="xp-title">
     <div class="container">
-      <header class="section__head">
-        <h2>About Me</h2>
-        <p>With 10+ years of experience, I combine product thinking, technical execution & data-driven iteration.</p>
-      </header>
+      <!-- Title stays in normal flow; you can style it with your existing CSS -->
+      <h2 id="xp-title" class="h1 faint">Experience</h2>
+      <div class="divider"></div>
+      <div class="xp-list">
+        <!-- Row 1 -->
+        <article class="xp reveal">
+          <div class="xp__left">
+            <h3 class="xp__role h3">Webmaster (Web Strategy &amp; SEO)</h3>
+            <p class="xp__meta">
+              <a href="#" class="xp__org">RootstockLabs</a> — 2021 to 2025
+            </p>
+            <div class="tags">
+                <div class="industry-tag">Blockchain</div>
+                <div class="industry-tag">Cryptocurrency</div>
+                <div class="industry-tag">DeFi</div>
+            </div>
+          </div>
+          <div class="xp__right">
+            <p>
+                I led several major website rebrands and helped build a unified web ecosystem that was faster, more consistent, and easier to maintain. One highlight was relaunching the developer portal, which earned recognition for Best Accessible Multimodal Documentation (2024).
+            </p>
+          </div>
+        </article>
+  
+        <!-- Row 2 -->
+        <article class="xp reveal">
+          <div class="xp__left">
+            <h3 class="xp__role h3">Marketing Lead</h3>
+            <p class="xp__meta">
+              <a href="#" class="xp__org">Blue Coding / Resolve Digital</a> — 2020 to 2021
+            </p>
+            <div class="tags">
+                <div class="industry-tag">IT Services</div>
+                <div class="industry-tag">Outsourcing</div>
+                <div class="industry-tag">Web Agency</div>
+            </div>
+          </div>
+          <div class="xp__right">
+            <p>
+                I led SEO and site optimization efforts to strengthen visibility and support inbound growth. I improved site structure, content, and performance to build topical authority and increase qualified traffic.
+            </p>
 
-      <div class="grid stats">
-        <article class="card stat">
-          <div class="stat__icon">🧩</div>
-          <h3>Development</h3>
-          <p>React / Next / Gatsby / WP — fast, secure, measurable sites.</p>
+          </div>
         </article>
-        <article class="card stat">
-          <div class="stat__icon">📈</div>
-          <h3>SEO & Optimization</h3>
-          <p>LLM/keyword strategy, IA, technical audits, Core Web Vitals.</p>
-        </article>
-        <article class="card stat">
-          <div class="stat__icon">🎯</div>
-          <h3>Analytics</h3>
-          <p>GA4, GTM, event models, dashboards; test & learn loops.</p>
-        </article>
-        <article class="card stat">
-          <div class="stat__icon">🤝</div>
-          <h3>Digital Marketing</h3>
-          <p>Campaign ops, landing pages, multilingual & governance.</p>
-        </article>
+
+                <!-- Row 3 -->
+                <article class="xp reveal">
+                    <div class="xp__left">
+                      <h3 class="xp__role h3">Marketing Coordinator</h3>
+                      <p class="xp__meta">
+                        <a href="#" class="xp__org">Predictable Revenue</a> —  2018 to 2020
+                      </p>
+                    </div>
+                    <div class="xp__right">
+                      <p>
+                        Co-organized a campus designathon: set goals, partnered with sponsors, coordinated judging,
+                        and grew the local design community.
+                      </p>
+                      <div class="tags">
+                        <div class="industry-tag">Sales Consulting</div>
+                        <div class="industry-tag">B2B Growth</div>
+                    </div>
+                    </div>
+                  </article>
+  
+        <!-- Add more <article class="xp reveal">…</article> if you want -->
+      </div>
+  
+      <!-- CTAs (also revealed on scroll) -->
+      <div class="xp-ctas reveal">
+        <a class="btn btn-primary" href="/resume.html">View full résumé</a>
+        <a class="btn btn-ghost" href="/files/Max_Barrera_Resume.pdf" download>Download PDF</a>
       </div>
     </div>
   </section>
 
 
+  
+    <!--Services -->
 
-  <!-- Services -->
-  <section id="services" class="section">
-    <div class="container">
-      <header class="section__head">
-        <h2>Services</h2>
-        <p>End-to-end support—from discovery to launch to ongoing optimization.</p>
-      </header>
+    <section id="services" class="section">
+        <div class="container">
+          <header class="section__head">
+            <h2>Services</h2>
+            <p>End-to-end support—from discovery to launch to ongoing optimization.</p>
+          </header>
+    
+          <div class="grid services">
+            <article class="card service">
+              <div class="service__icon">💻</div>
+              <h3>Web Development</h3>
+              <p>Component systems, headless CMS, accessibility & performance.</p>
+            </article>
+            <article class="card service">
+              <div class="service__icon">🧪</div>
+              <h3>Growth Experiments</h3>
+              <p>A/B tests, funnel analysis, experiment design, CRO.</p>
+            </article>
+            <article class="card service">
+              <div class="service__icon">🔍</div>
+              <h3>SEO & IA Strategy</h3>
+              <p>Site architecture, content briefs, schema, internal linking.</p>
+            </article>
+            <article class="card service">
+              <div class="service__icon">🎛️</div>
+              <h3>Tagging & Tracking</h3>
+              <p>GA4, GTM, consent mode, server-side tagging, QA.</p>
+            </article>
+            <article class="card service">
+              <div class="service__icon">🚀</div>
+              <h3>Migrations & Rebrands</h3>
+              <p>SEO-safe launches: redirects, parity checks, CWV protection.</p>
+            </article>
+            <article class="card service">
+              <div class="service__icon">📣</div>
+              <h3>Campaign Ops</h3>
+              <p>Landing pages, tracking plans, measurement and reporting.</p>
+            </article>
+          </div>
+        </div>
+      </section>
 
-      <div class="grid services">
-        <article class="card service">
-          <div class="service__icon">💻</div>
-          <h3>Web Development</h3>
-          <p>Component systems, headless CMS, accessibility & performance.</p>
-        </article>
-        <article class="card service">
-          <div class="service__icon">🧪</div>
-          <h3>Growth Experiments</h3>
-          <p>A/B tests, funnel analysis, experiment design, CRO.</p>
-        </article>
-        <article class="card service">
-          <div class="service__icon">🔍</div>
-          <h3>SEO & IA Strategy</h3>
-          <p>Site architecture, content briefs, schema, internal linking.</p>
-        </article>
-        <article class="card service">
-          <div class="service__icon">🎛️</div>
-          <h3>Tagging & Tracking</h3>
-          <p>GA4, GTM, consent mode, server-side tagging, QA.</p>
-        </article>
-        <article class="card service">
-          <div class="service__icon">🚀</div>
-          <h3>Migrations & Rebrands</h3>
-          <p>SEO-safe launches: redirects, parity checks, CWV protection.</p>
-        </article>
-        <article class="card service">
-          <div class="service__icon">📣</div>
-          <h3>Campaign Ops</h3>
-          <p>Landing pages, tracking plans, measurement and reporting.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Projects -->
+  <!-- Featured Projects 
   <section id="projects" class="section">
     <div class="container">
       <header class="section__head">
@@ -220,75 +317,17 @@
     </div>
   </section>
 
-  <!-- Work -->
-<section id="work" class="section" aria-labelledby="work-title">
-    <div class="container">
-      <header class="section__head">
-        <h2 id="work-title">Work</h2>
-        <p>Selected roles and projects.</p>
-      </header>
+
+
   
-      <ol class="work-list" role="list">
-        <!-- Item 1 -->
-        <li class="work-item">
-          <div class="work__years">
-            <time datetime="2021">2021</time>
-            <span class="sep">—</span>
-            <span class="badge-now" title="Present">Now</span>
-          </div>
-          <div class="work__content">
-            <h3 class="work__company">
-              <a href="#" aria-label="Superculture">Superculture™</a>
-            </h3>
-            <p class="work__role">Product Designer</p>
-            <p class="work__desc">
-              House of brands. Empowering the new guard of culture curators to launch memorable brands.
-            </p>
-          </div>
-        </li>
-  
-        <!-- Item 2 -->
-        <li class="work-item">
-          <div class="work__years">
-            <time datetime="2019">2019</time>
-            <span class="sep">—</span>
-            <time datetime="2021">2021</time>
-          </div>
-          <div class="work__content">
-            <h3 class="work__company"><a href="#">Facebook</a></h3>
-            <p class="work__role">Product Designer</p>
-            <p class="work__desc">
-              Launched 0→1 Facebook Reels (US & Global). Also contributed to Newsfeed & executive initiatives.
-            </p>
-          </div>
-        </li>
-  
-        <!-- Item 3 -->
-        <li class="work-item">
-          <div class="work__years">
-            <time datetime="2018">2018</time>
-            <span class="sep">—</span>
-            <time datetime="2019">2019</time>
-          </div>
-          <div class="work__content">
-            <h3 class="work__company"><a href="#">Italic</a></h3>
-            <p class="work__role">UX Designer</p>
-            <p class="work__desc">
-              Helped build DTC marketplace connecting luxury manufacturers with consumers—no logo premiums.
-            </p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
   
 
   <!-- Testimonials -->
-  <section id="testimonials" class="section" aria-labelledby="testimonials-title">
+  <section id="recommendations" class="section" aria-labelledby="testimonials-title">
     <div class="container">
       <header class="section__head">
-        <h2 id="testimonials-title">Testimonials</h2>
-        <p>What clients and collaborators say about working with me.</p>
+        <h2 id="testimonials-title">Recommendations</h2>
+        <p>What previous employers say about me</p>
       </header>
   
       <div class="grid testimonials">
@@ -362,13 +401,10 @@
         </article>
   
         <!-- Future testimonials: copy/paste another <article> block like above -->
+
+            
       </div>
   
-      <!-- Optional CTA row under testimonials -->
-      <div class="testimonials__cta">
-        <a class="btn btn-ghost" href="mailto:you@example.com">Request a Reference</a>
-        <a class="btn btn-primary" href="#contact">Work With Me</a>
-      </div>
     </div>
   </section>
   
