@@ -10,6 +10,7 @@
     --accent: #2F8987;      /* low-fi indigo */
     --accent-2: #0e6ba8 ;    /* green accent for tags */
     --border: #00072d;
+    --delay: .8s;
   
     --radius: 14px;
     --shadow: 0 8px 30px rgba(0,0,0,.06);
@@ -24,6 +25,7 @@
   }
   
   *{ box-sizing:border-box; }
+  html[data-scroll-dir="up"] .reveal { --dir: -1; }  /* enter from above */
   body{
     margin:0;
     font-family:var(--main-font);
@@ -296,17 +298,23 @@
 
   .hero__social a svg path {
     fill: var(--faint);                /* default color */
-    transition: fill .2s ease;
+    transition: fill .4s ease;
+    
   }
 
-  .hero__social .github-icon:hover svg path,
-.hero__social .github-icon:focus-visible svg path {
-  fill: var(--text);                /* hover/focus color */
+
+
+.hero__social a:hover svg path,
+.hero__social a:focus-visible svg path  {
+  fill: var(--accent);                /* hover/focus color */
+  transition: transform 0.4s ease;
 }
 
-.hero__social .linkedin-icon:hover svg path,
-.hero__social .linkedin-icon:focus-visible svg path {
+.hero__social a:hover svg,
+.hero__social a:focus-visible svg   {
   fill: var(--accent);                /* hover/focus color */
+  transition: transform 0.4s ease;
+  transform: translateY(-1px);
 }
   
   
@@ -957,13 +965,13 @@
     /* DOWN by default; JS toggles [data-scroll-dir] on <html> */
     --dir: 1;                          /* 1=down, -1=up */
     opacity: 0;
-    transform: translateY(calc(var(--dir) * 18px));
+    transform: translateY(calc(var(--dir) * 100px));
     transition:
-      opacity 460ms cubic-bezier(.2,.6,.2,1) var(--delay, 0ms),
-      transform 460ms cubic-bezier(.2,.6,.2,1) var(--delay, 0ms);
+      opacity 960ms cubic-bezier(.2,.6,.2,1) var(--delay, 0ms),
+      transform 960ms cubic-bezier(.2,.6,.2,1) var(--delay, 0ms);
     will-change: opacity, transform;
   }
-  html[data-scroll-dir="up"] .reveal { --dir: -1; }  /* enter from above */
+
   .reveal.in{ opacity: 1; transform: none; }
   
   @media (prefers-reduced-motion: reduce){
@@ -1017,6 +1025,7 @@
     flex-wrap: wrap;
     gap: 12px 16px;
     align-items: center;
+    justify-content: flex-end;
   }
   
   .social-links a {
@@ -1055,5 +1064,25 @@
     .footer-bottom {
       text-align: left;
     }
+  }
+  
+
+
+  /* Base icon fill */
+.footer-social svg path {
+    fill: var(--faint); /* default color, dark gray/black */
+    transition: fill 0.4s ease;
+  }
+  
+  /* Hover state for links */
+  .footer-social a:hover svg path,
+  .footer-social a:focus svg path {
+    fill: var(--accent); /* blue accent — matches your Contact button */
+  }
+  
+  /* Optional: add slight opacity or scale change for a tactile effect */
+  .footer-social a:hover svg {
+    transform: translateY(-1px);
+    transition: transform 0.4s ease;
   }
   
