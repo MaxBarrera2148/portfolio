@@ -1105,14 +1105,64 @@
         gap: 56px;
     }
     h1, .h1 {
-        font-size: 64px;
-        line-height: 74px;
+        font-size: 56px;
+        line-height: 64px;
     }
     h2, .h2 {
-        font-size: 48px;
+        font-size: 40px;
     }
     h3, .h3 {
-        font-size: 36px;
-        line-height: 38px;
+        font-size: 28px;
+        line-height: 32px;
+    }
+    .hero{
+        padding: 0px 0px;
+    }
+    .divider {
+        height: 1rem;
+        margin: 2rem auto;
+    }
+    .hero h1{
+        display: none;
+    }
+    .xp {
+        padding: 0px 0px 5rem 0px;
     }
   }
+
+
+  /* Enter: always slide up (from below) + fade */
+.reveal{
+    --enter-d: 100px;
+    opacity: 0;
+    transform: translateY(var(--enter-d));
+    transition:
+      opacity 960ms cubic-bezier(.2,.6,.2,1) var(--delay, 0ms),
+      transform 960ms cubic-bezier(.2,.6,.2,1) var(--delay, 0ms);
+    will-change: opacity, transform;
+  }
+  
+  /* When fully shown */
+  .reveal.in{ opacity: 1; transform: none; }
+  
+  /* Exit: direction-aware (JS sets --leave-dir = 1 for down, -1 for up OR vice-versa) */
+  .reveal.leaving{
+    --leave-d: 100px;
+    opacity: 0;
+    transform: translateY(calc(var(--leave-dir, -1) * var(--leave-d)));
+  }
+  
+  /* If we want *no* animation on enter while scrolling up */
+  .reveal.no-enter{
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    .reveal, .reveal.leaving, .reveal.no-enter {
+      opacity: 1 !important; transform: none !important; transition: none !important;
+    }
+  }
+  

@@ -429,21 +429,21 @@ for (let i = 0; i < fullText.length; i++) {
 })();
 
 (() => {
-  /* Track scroll direction globally */
+  /* Direction flag for exit animation only */
   const html = document.documentElement;
   let lastY = window.scrollY;
   function setDir(){
     const y = window.scrollY;
-    html.setAttribute('data-scroll-dir', y > lastY ? 'down' : 'up');
+    html.dataset.scrollDir = y > lastY ? 'down' : 'up';
     lastY = y;
   }
   setDir();
   window.addEventListener('scroll', setDir, { passive: true });
 
-  /* Observer with hysteresis + cooldown */
-  const ENTER_RATIO = 0.35;
-  const EXIT_RATIO  = 0.15;
-  const TOGGLE_DELTA = 32;
+  /* Hysteresis + cooldown to avoid flapping */
+  const ENTER_RATIO = 0.35;   // reveal when >= 35% visible
+  const EXIT_RATIO  = 0.15;   // hide when <= 15% visible
+  const TOGGLE_DELTA = 32;    // min px scroll between toggles of the same item
 
   document.querySelectorAll('.xp-preview').forEach(section => {
     const items = [...section.querySelectorAll('.reveal')];
@@ -453,15 +453,15 @@ for (let i = 0; i < fullText.length; i++) {
     const state = new Map(items.map(el => [el, { in:false, lastY:-1 }]));
 
     const io = new IntersectionObserver((entries) => {
-      const dir = html.getAttribute('data-scroll-dir') || 'down';
+      const dir = html.dataset.scrollDir || 'down';
 
-      // Sort for deterministic, direction-aware staggering
+      // Deterministic order per direction (affects stagger on ENTER down only)
       const sorted = entries.slice().sort((a,b) => {
         const follows = (a.target.compareDocumentPosition(b.target) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1;
         return dir === 'down' ? follows : -follows;
       });
 
-      let batchIndex = 0;
+      let batch = 0;
 
       for (const entry of sorted){
         const el = entry.target;
@@ -469,40 +469,53 @@ for (let i = 0; i < fullText.length; i++) {
         const ratio = entry.intersectionRatio;
         const movedEnough = Math.abs(window.scrollY - st.lastY) >= TOGGLE_DELTA;
 
-        // ENTER
+        /* ENTER */
         if (!st.in && entry.isIntersecting && ratio >= ENTER_RATIO && movedEnough){
-          // if it was mid-leave, cancel that state
+          // Cancel any in-progress exit
           el.classList.remove('leaving');
           el.style.removeProperty('--leave-dir');
 
-          el.style.setProperty('--delay', (batchIndex++ * step) + 'ms');
-          el.classList.add('in');
+          if (dir === 'up') {
+            // User is scrolling UP: do NOT animate enter (per your requirement)
+            el.classList.add('no-enter');      // disable transition
+            // force style
+            void el.offsetWidth;
+            el.classList.add('in');            // instantly show
+            // re-enable transitions for future exits
+            requestAnimationFrame(() => el.classList.remove('no-enter'));
+          } else {
+            // Scrolling DOWN: animate enter with stagger
+            el.style.setProperty('--delay', (batch++ * step) + 'ms');
+            el.classList.add('in');
+          }
+
           st.in = true;
           st.lastY = window.scrollY;
           continue;
         }
 
-        // EXIT
+        /* EXIT */
         if (st.in && (ratio <= EXIT_RATIO || !entry.isIntersecting) && movedEnough){
-          // choose exit direction
-          const leaveDir = (dir === 'up') ? 1 : -1; // up-scroll => slide DOWN; down-scroll => slide UP
+          // Set exit direction:
+          //  - scrolling UP => leave downward
+          //  - scrolling DOWN => leave upward
+          const leaveDir = (dir === 'up') ? 1 : -1;
           el.style.setProperty('--leave-dir', leaveDir);
 
-          // add leaving (overrides .in), then remove .in so it animates to the leaving transform
+          // Animate out (overrides .in), then remove 'in' so it transitions to leaving transform
           el.classList.add('leaving');
-          // force transition to start from current computed style
-          void el.offsetWidth; // reflow
+          void el.offsetWidth;   // reflow to ensure transition
           el.classList.remove('in');
 
-          // cleanup after transition (single-shot per element)
-          const done = (ev) => {
-            if (ev.propertyName !== 'opacity') return; // wait for opacity transition
+          // Cleanup after transition
+          const onEnd = (ev) => {
+            if (ev.propertyName !== 'opacity') return;
             el.classList.remove('leaving');
             el.style.removeProperty('--leave-dir');
             el.style.removeProperty('--delay');
-            el.removeEventListener('transitionend', done);
+            el.removeEventListener('transitionend', onEnd);
           };
-          el.addEventListener('transitionend', done);
+          el.addEventListener('transitionend', onEnd);
 
           st.in = false;
           st.lastY = window.scrollY;
