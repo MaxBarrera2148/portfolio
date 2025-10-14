@@ -25,7 +25,6 @@
   }
   
   *{ box-sizing:border-box; }
-  html[data-scroll-dir="up"] .reveal { --dir: -1; }  /* enter from above */
   body{
     margin:0;
     font-family:var(--main-font);
@@ -939,43 +938,30 @@
 /* CTAs row */
 .xp-ctas { display: flex; gap: 12px; margin-top: 28px; }
 
-/* Reveal-on-scroll (entries + CTAs only) */
-.reveal {
-  opacity: 0;
-  transform: translateY(100px);
-  transition:
-    opacity 800ms cubic-bezier(.2,.6,.2,1) var(--delay, 0ms),
-    transform 800ms cubic-bezier(.2,.6,.2,1) var(--delay, 0ms);
-  will-change: opacity, transform;
-}
-.reveal.in { opacity: 1; transform: none; }
-
-/* Responsive stack */
-@media (max-width: 900px) {
-  .xp { grid-template-columns: 1fr; gap: 16px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-}
-
-
-
-/* Reveal-on-scroll (direction aware) */
+/* Direction-aware enter */
 .reveal{
-    /* DOWN by default; JS toggles [data-scroll-dir] on <html> */
-    --dir: 1;                          /* 1=down, -1=up */
+    --enter-d: 100px;         /* distance for entering */
     opacity: 0;
-    transform: translateY(calc(var(--dir) * 100px));
+    transform: translateY(calc(var(--enter-dir, 1) * var(--enter-d)));
     transition:
       opacity 960ms cubic-bezier(.2,.6,.2,1) var(--delay, 0ms),
       transform 960ms cubic-bezier(.2,.6,.2,1) var(--delay, 0ms);
     will-change: opacity, transform;
   }
-
-  .reveal.in{ opacity: 1; transform: none; }
+  html[data-scroll-dir="down"] .reveal { --enter-dir: 1; }   /* slide up into place */
+  html[data-scroll-dir="up"]   .reveal { --enter-dir: -1; }  /* slide down into place */
+  .reveal.in { opacity: 1; transform: none; }
   
+  /* Explicit exit animation (overrides .in) */
+  .reveal.leaving{
+    --leave-d: 100px;         /* distance for leaving */
+    opacity: 0;
+    transform: translateY(calc(var(--leave-dir, 1) * var(--leave-d)));
+  }
+  
+  /* Reduced motion safety */
   @media (prefers-reduced-motion: reduce){
-    .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+    .reveal, .reveal.leaving { opacity:1 !important; transform:none !important; transition:none !important; }
   }
   
 

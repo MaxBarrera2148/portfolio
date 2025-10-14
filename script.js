@@ -429,56 +429,90 @@ for (let i = 0; i < fullText.length; i++) {
 })();
 
 (() => {
-  // 1) Track scroll direction globally for CSS
+  /* Track scroll direction globally */
+  const html = document.documentElement;
   let lastY = window.scrollY;
-  const setDir = () => {
+  function setDir(){
     const y = window.scrollY;
-    document.documentElement.setAttribute('data-scroll-dir', y > lastY ? 'down' : 'up');
+    html.setAttribute('data-scroll-dir', y > lastY ? 'down' : 'up');
     lastY = y;
-  };
+  }
   setDir();
   window.addEventListener('scroll', setDir, { passive: true });
 
-  // 2) Observe each xp-preview independently
-  const sections = [...document.querySelectorAll('.xp-preview')];
-  if (!sections.length) return;
+  /* Observer with hysteresis + cooldown */
+  const ENTER_RATIO = 0.35;
+  const EXIT_RATIO  = 0.15;
+  const TOGGLE_DELTA = 32;
 
-  const options = { root: null, rootMargin: '0px 0px -12% 0px', threshold: 0.14 };
-
-  sections.forEach(section => {
+  document.querySelectorAll('.xp-preview').forEach(section => {
     const items = [...section.querySelectorAll('.reveal')];
     if (!items.length) return;
 
-    const step = Number(section.dataset.stagger) || 120; // ms between items
+    const step = Number(section.dataset.stagger) || 120;
+    const state = new Map(items.map(el => [el, { in:false, lastY:-1 }]));
 
     const io = new IntersectionObserver((entries) => {
-      // Split entering vs leaving
-      const entering = entries.filter(e => e.isIntersecting);
-      const leaving  = entries.filter(e => !e.isIntersecting);
+      const dir = html.getAttribute('data-scroll-dir') || 'down';
 
-      // Apply stagger order based on scroll direction
-      const dir = document.documentElement.getAttribute('data-scroll-dir') || 'down';
-
-      // Sort by document order so stagger is consistent
-      let ordered = entering.sort((a, b) =>
-        (a.target.compareDocumentPosition(b.target) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1
-      );
-
-      if (dir === 'up') ordered.reverse(); // reverse the cascade when scrolling up
-
-      ordered.forEach((e, i) => {
-        const el = e.target;
-        el.style.setProperty('--delay', (i * step) + 'ms');
-        el.classList.add('in');
+      // Sort for deterministic, direction-aware staggering
+      const sorted = entries.slice().sort((a,b) => {
+        const follows = (a.target.compareDocumentPosition(b.target) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1;
+        return dir === 'down' ? follows : -follows;
       });
 
-      // When leaving, remove 'in' (animation reverses automatically)
-      leaving.forEach(e => {
-        const el = e.target;
-        el.style.removeProperty('--delay');
-        el.classList.remove('in');
-      });
-    }, options);
+      let batchIndex = 0;
+
+      for (const entry of sorted){
+        const el = entry.target;
+        const st = state.get(el);
+        const ratio = entry.intersectionRatio;
+        const movedEnough = Math.abs(window.scrollY - st.lastY) >= TOGGLE_DELTA;
+
+        // ENTER
+        if (!st.in && entry.isIntersecting && ratio >= ENTER_RATIO && movedEnough){
+          // if it was mid-leave, cancel that state
+          el.classList.remove('leaving');
+          el.style.removeProperty('--leave-dir');
+
+          el.style.setProperty('--delay', (batchIndex++ * step) + 'ms');
+          el.classList.add('in');
+          st.in = true;
+          st.lastY = window.scrollY;
+          continue;
+        }
+
+        // EXIT
+        if (st.in && (ratio <= EXIT_RATIO || !entry.isIntersecting) && movedEnough){
+          // choose exit direction
+          const leaveDir = (dir === 'up') ? 1 : -1; // up-scroll => slide DOWN; down-scroll => slide UP
+          el.style.setProperty('--leave-dir', leaveDir);
+
+          // add leaving (overrides .in), then remove .in so it animates to the leaving transform
+          el.classList.add('leaving');
+          // force transition to start from current computed style
+          void el.offsetWidth; // reflow
+          el.classList.remove('in');
+
+          // cleanup after transition (single-shot per element)
+          const done = (ev) => {
+            if (ev.propertyName !== 'opacity') return; // wait for opacity transition
+            el.classList.remove('leaving');
+            el.style.removeProperty('--leave-dir');
+            el.style.removeProperty('--delay');
+            el.removeEventListener('transitionend', done);
+          };
+          el.addEventListener('transitionend', done);
+
+          st.in = false;
+          st.lastY = window.scrollY;
+        }
+      }
+    }, {
+      root: null,
+      rootMargin: '-8% 0% -18% 0%',
+      threshold: [0, .1, .2, .35, .5, .75, 1]
+    });
 
     items.forEach(el => io.observe(el));
   });
