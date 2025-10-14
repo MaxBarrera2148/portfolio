@@ -1088,4 +1088,31 @@
     #xp-fit .xp__right{
         align-items: flex-start;
     }
+    .hero__grid {
+        grid-row: 2;
+        gap: 104px;
+    }
+    .portrait-decoration {
+        grid-row: 1;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .avatar {
+        height: 360px;
+    }
+    .hero__grid {
+        gap: 56px;
+    }
+    h1, .h1 {
+        font-size: 64px;
+        line-height: 74px;
+    }
+    h2, .h2 {
+        font-size: 48px;
+    }
+    h3, .h3 {
+        font-size: 36px;
+        line-height: 38px;
+    }
   }
