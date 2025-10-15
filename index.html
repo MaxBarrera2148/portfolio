@@ -4,10 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Max Barrera — Developer, SEO & Digital Marketing Expert</title>
+  <meta name="description" content="I'm Max Barrera, a marketer and developer with strong experience in SEO and UX. I help companies build elegant, intuitive, and measurable websites that solve complex business challenges." />
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/sf-ui-text-2" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">             
+  <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
+
+<link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet"> 
 </head>
 <body>
   <!-- Header -->
@@ -38,7 +39,8 @@
   <section class="hero">
     <div class="container hero__grid">
       <div class="hero__copy">
-       <h1 ><span class="faint">Hello!</span> <br> I'm Max.</h1>       
+       <h1 class="visually-hidden">Max Barrera's developer & SEO portfolio</h1>
+       <h2 class="h1"><span class="faint">Hello!</span> <br> I'm Max.</h2>       
         <p>I’m a marketer and developer with strong experience in SEO and UX. I help companies build elegant, intuitive, and measurable websites that solve complex business challenges. </p>
         <div class="hero__social">
             <a class="github-icon" href="https://github.com/max-barrera-2148" aria-label="GitHub">        
@@ -56,12 +58,10 @@
       </div>
       <div class="portrait-decoration">
         <div class="hero__media">
-            <img
-              src="/images/europe.png"
-              alt="Max Barrera headshot placeholder"
-              class="avatar"
-              loading="lazy"
-            />
+            <picture>
+                <source srcset="/images/europe.webp" type="image/webp">
+                <img src="/images/europe.png" alt="Max Barrera headshot" class="avatar" width="464" height="425">
+              </picture>
           </div>
 
       </div>
@@ -510,7 +510,8 @@
               <div class="footer-social" aria-label="Social and contact">
                 <ul class="social-links">
                 <li>
-                    <a href="mailto:m.a.barrera6248@gmail.com" class="email-link">
+                    <a href="mailto:m.a.barrera6248@gmail.com" class="email-link" aria-label="Email link">
+                      <span class="sr-only">Email</span>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg height="30px" width="28px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                          viewBox="0 0 512 512"  xml:space="preserve">
