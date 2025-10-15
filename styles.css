@@ -292,13 +292,48 @@
   .hero__social{ display: flex; gap: 10px; margin-top: 32px; }
   .hero__social a{ text-decoration:none; color: inherit; }
   .hero__media{ display:flex; justify-content:flex-end; }
+
+
+/* Make <picture> the visual frame */
+.hero__media picture { display:block; }        /* removes inline baseline gap */
+
+.avatar{
+  width: 464px;                 /* desktop size */
+  aspect-ratio: 464 / 425;      /* keeps the same box as before */
+  border-radius: 2%;
+  overflow: hidden;             /* clip corners */
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+/* The image simply fills the frame */
+.avatar > img{
+  display:block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% 20%;
+}
+
+/* Tablet/mobile override */
+@media (max-width: 768px){
+  .hero__media { justify-content: center; }
   .avatar{
-    width: 464px; height: 425px; border-radius: 2%;
-    object-fit: cover;
-    object-position: 70% 20%;
-    box-shadow: var(--shadow);
-    background: #fff;
+    width: 100%;          /* now the flex item has a definite width */
+    height: 550px;        /* fixed height like before */
+    aspect-ratio: auto;   /* ignore the desktop ratio when height is fixed */
   }
+}
+@media (max-width: 540px){
+  .avatar{ height: 360px; }
+}
+
+
+
+
+
+
+
 
   .hero__social a svg {
     width: 35px;
@@ -1089,10 +1124,6 @@
     .hero__media {
         justify-content: center;
     }
-    .avatar {
-        width: 100%;
-        height: 550px;
-    }
     .xp {
         grid-template-columns: 1fr;
     }
@@ -1109,9 +1140,6 @@
   }
 
   @media (max-width: 540px) {
-    .avatar {
-        height: 360px;
-    }
     .hero__grid {
         gap: 56px;
     }

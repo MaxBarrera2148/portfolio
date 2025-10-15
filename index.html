@@ -58,12 +58,11 @@
       </div>
       <div class="portrait-decoration">
         <div class="hero__media">
-            <picture>
-                <source srcset="/images/europe.webp" type="image/webp">
-                <img src="/images/europe.png" alt="Max Barrera headshot" class="avatar" width="464" height="425">
-              </picture>
-          </div>
-
+          <picture class="avatar">
+            <source srcset="/images/europe.webp" type="image/webp">
+            <img src="/images/europe.png" alt="Max Barrera headshot" decoding="async" fetchpriority="high">
+          </picture>
+        </div>        
       </div>
     </div>
   </section>
