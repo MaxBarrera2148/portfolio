@@ -1197,6 +1197,7 @@
         align-items: flex-start;
 
   }
+}
 
   @media (max-width: 540px) {
     .hero__grid {
