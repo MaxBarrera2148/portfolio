@@ -16,13 +16,13 @@
     --shadow: 0 8px 30px rgba(0,0,0,.06);
   
     --brand-size: clamp(22px, 2.2vw, 30px); /* keep constant across states */
-    --dur: 420ms;
+    --dur: 820ms;
     --stagger: 24ms;
     --easing: cubic-bezier(.4,0,.2,1);
     --main-font: Inter, sans-serif;
-    --delay: .8s;
     ;
   }
+
   
   *{ box-sizing:border-box; }
   body{
@@ -30,7 +30,7 @@
     font-family:var(--main-font);
     color:var(--text);
     background:var(--bg);
-    font-family: Inter, sans-serif;                                          
+    font-family: var(--main-font);                                          
   }
 
   h1,h2,h3,h4,h5,h6{ 
@@ -39,7 +39,6 @@
 }
 
   h1, .h1 {
-    font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: 88px;
     font-style: normal;
@@ -51,7 +50,6 @@
   }
 
   h2, .h2 {
-    font-family: var(--main-font);
     font-size: 56px;
     font-style: normal;
     font-weight: 700;
@@ -62,7 +60,6 @@
   }
 
   h3, .h3 {
-        font-family: var(--main-font);
         font-size: 2.5rem;
         font-style: normal;
         font-weight: 700;
@@ -91,7 +88,6 @@
   p{ 
     margin-block-start: 0;
     margin-block-end: 0;
-    font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 16px;
     margin: 0;
@@ -124,6 +120,72 @@
     margin: 3rem auto;
     height: 4rem;
 }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+
+/* Skip link: hidden until keyboard focus */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  z-index: 10000;
+
+  /* Big, tappable target */
+  padding: 10px 14px;
+  border-radius: 8px;
+  font: inherit;
+  line-height: 1;
+  text-decoration: none;
+
+  /* Colors (use your tokens if you like) */
+  background: #ffffff;
+  color: #111;
+  border: 1px solid #00072d; /* matches your --border */
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+
+  /* Visually hide until focused */
+  transform: translateY(-150%);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+/* Reveal on keyboard focus */
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid #2F8987;     /* matches your --accent */
+  outline-offset: 2px;
+  box-shadow: 0 6px 22px rgba(0,0,0,.18);
+}
+
+/* High Contrast / Forced Colors support */
+@media (forced-colors: active) {
+  .skip-link {
+    border: 1px solid ButtonText;
+    background: Canvas;
+    color: ButtonText;
+  }
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    outline: 2px solid Highlight;
+  }
+}
+
+/* Optional: fixed variant that stays visible while focused (sticky header) */
+/*
+.skip-link {
+  position: fixed;
+  left: 12px;
+  top: 12px;
+}
+*/
+
 
   .spacing-40{ margin-bottom: 32px; }
 
@@ -180,6 +242,13 @@
   .main-nav a:not(.btn){ opacity: .85; }
   .main-nav a:not(.btn):hover{ opacity: 1; }
   
+  .main-nav .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
   /* Brand */
 
 
@@ -281,13 +350,56 @@
   .hero__social{ display: flex; gap: 10px; margin-top: 32px; }
   .hero__social a{ text-decoration:none; color: inherit; }
   .hero__media{ display:flex; justify-content:flex-end; }
+
+
+/* Make <picture> the visual frame */
+.hero__media picture { display:block; }        /* removes inline baseline gap */
+
+.avatar{
+  width: 464px;                 /* desktop size */
+  aspect-ratio: 464 / 425;      /* keeps the same box as before */
+  border-radius: 2%;
+  overflow: hidden;             /* clip corners */
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+/* The image simply fills the frame */
+.avatar > img{
+  display:block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% 20%;
+}
+
+/* Tablet/mobile override */
+@media (max-width: 820px){
+.hero__grid {
+    grid-row: 2;
+    gap: 104px;
+}
+.portrait-decoration {
+    grid-row: 1;
+}
+  .hero__media { justify-content: center; }
   .avatar{
-    width: 464px; height: 425px; border-radius: 2%;
-    object-fit: cover;
-    object-position: 70% 20%;
-    box-shadow: var(--shadow);
-    background: #fff;
+    width: 100%;          /* now the flex item has a definite width */
+    height: 550px;        /* fixed height like before */
+    aspect-ratio: auto;   /* ignore the desktop ratio when height is fixed */
   }
+}
+
+@media (max-width: 540px){
+  .avatar{ height: 360px; }
+}
+
+
+
+
+
+
+
 
   .hero__social a svg {
     width: 35px;
@@ -1078,29 +1190,15 @@
     .hero__media {
         justify-content: center;
     }
-    .avatar {
-        width: 100%;
-        height: 550px;
-    }
     .xp {
         grid-template-columns: 1fr;
     }
     #xp-fit .xp__right{
         align-items: flex-start;
-    }
-    .hero__grid {
-        grid-row: 2;
-        gap: 104px;
-    }
-    .portrait-decoration {
-        grid-row: 1;
-    }
+
   }
 
   @media (max-width: 540px) {
-    .avatar {
-        height: 360px;
-    }
     .hero__grid {
         gap: 56px;
     }
@@ -1122,7 +1220,7 @@
         height: 1rem;
         margin: 2rem auto;
     }
-    .hero h1{
+    .hero h2{
         display: none;
     }
     .xp {
