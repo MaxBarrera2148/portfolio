@@ -530,3 +530,22 @@ for (let i = 0; i < fullText.length; i++) {
     items.forEach(el => io.observe(el));
   });
 })();
+
+
+(() => {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  // Run once on initial load
+  const start = () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // next frame ensures styles are applied before we toggle the class → smoother start
+    requestAnimationFrame(() => hero.classList.add('hero--ready'));
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, { once: true });
+  } else {
+    start();
+  }
+})();
