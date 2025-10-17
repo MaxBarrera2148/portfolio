@@ -18,6 +18,7 @@
     --brand-size: clamp(22px, 2.2vw, 30px); /* keep constant across states */
     --dur: 820ms;
     --stagger: 24ms;
+    --in-timing: cubic-bezier(.2,.6,.2,1); 
     --easing: cubic-bezier(.4,0,.2,1);
     --main-font: Inter, sans-serif;
     ;
@@ -40,7 +41,7 @@
 
   h1, .h1 {
     -webkit-font-smoothing: antialiased;
-    font-size: 88px;
+    font-size: 96px;
     font-style: normal;
     font-weight: 800;
     line-height: 107px;
@@ -360,7 +361,7 @@
 
 .avatar{
   width: 464px;                 /* desktop size */
-  aspect-ratio: 464 / 425;      /* keeps the same box as before */
+  aspect-ratio: 464 / 420;      /* keeps the same box as before */
   border-radius: 2%;
   overflow: hidden;             /* clip corners */
   background: #fff;
@@ -1269,3 +1270,28 @@
     }
   }
   
+
+
+  /* Play only when the section gets .hero--ready */
+.hero--ready .hero__copy {
+  animation: hero-slide-left 920ms var(--in-timing) 240ms both;
+}
+.hero--ready .portrait-decoration {
+  animation: hero-slide-right 920ms var(--in-timing) 240ms both;
+}
+
+/* Keyframes */
+@keyframes hero-slide-left {
+  from { opacity: 0; transform: translateX(-88px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes hero-slide-right {
+  from { opacity: 0; transform: translateX(88px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Accessibility: no motion */
+@media (prefers-reduced-motion: reduce){
+  .hero--ready .hero__copy,
+  .hero--ready .portrait-decoration { animation: none !important; }
+}
