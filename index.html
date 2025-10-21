@@ -152,7 +152,7 @@
     <div class="container hero__grid">
       <div class="hero__copy">
        <h1 class="visually-hidden" id="hero-title">Max Barrera's developer & SEO portfolio</h1>
-       <h2 class="h1"><span class="faint">Hello!</span> <br> I'm Max.</h2>       
+       <h2 class="h1"><span class="accent-lt">Hello!</span> <br> I'm Max.</h2>       
         <p>Full-stack developer & technical SEO specialist with 7+ years of experience optimizing complex sites for performance, scalability, and search visibility.  </p>
         <div class="hero__social">
             <a class="github-icon" href="https://github.com/max-barrera-2148"  aria-label="Max Barrera on GitHub">        
@@ -209,7 +209,7 @@
  <section id="xp-fit" class="xp-preview" aria-labelledby="xp-fit-title">
     <div class="container">
       <!-- Title stays in normal flow; you can style it with your existing CSS -->
-      <h2 id="xp-fit-title" class="h1 faint">About.</h2>
+      <h2 id="xp-fit-title" class="h1">About.</h2>
       <div class="divider"></div>
       <div class="xp-list">
         <!-- Row 1 -->
@@ -332,7 +332,7 @@
 <section id="resume-preview" class="xp-preview" aria-labelledby="xp-title">
     <div class="container">
       <!-- Title stays in normal flow; you can style it with your existing CSS -->
-      <h2 id="xp-title" class="h1 faint">Experience.</h2>
+      <h2 id="xp-title" class="h1">Experience.</h2>
       <div class="divider"></div>
       <div class="xp-list">
         <!-- Row 1 -->
@@ -502,92 +502,143 @@
   
   
 
-  <!-- Testimonials 
-  <section id="recommendations" class="section" aria-labelledby="testimonials-title">
-    <div class="container">
-      <header class="section__head">
-        <h2 id="testimonials-title">Recommendations</h2>
-        <p>What previous employers say about me</p>
-      </header>
-  
-      <div class="grid testimonials">
-        <!-- Testimonial 1
-        <article class="card testimonial" itemscope itemtype="https://schema.org/Review">
+<!-- Testimonials (slider) -->
+<!-- Testimonials (slider, 1 on mobile / 2 on desktop) -->
+<section id="recommendations" class="section xp-preview" aria-labelledby="testimonials-title">
+  <div class="container">
+    <header class="section__head">
+      <h2 id="testimonials-title" class="h2">Recommendations</h2>
+    </header>
+
+    <div class="t-slider reveal"
+         role="region"
+         aria-roledescription="carousel"
+         aria-labelledby="testimonials-title">
+      <div class="t-slider__viewport" aria-live="polite">
+        <!-- Slide 1 -->
+        <article class="card testimonial t-slide is-active"
+                 itemscope itemtype="https://schema.org/Review"
+                 aria-hidden="false">
           <div class="testimonial__header">
-            <img
-              class="testimonial__avatar"
-              src="images/david.jpg"
-              alt="Headshot of reviewer"
-              loading="lazy"
-              width="96" height="96"
-            />
+
             <div class="testimonial__meta">
               <strong itemprop="author" itemscope itemtype="https://schema.org/Person">
                 <span itemprop="name">David Hemmat</span>
               </strong>
               <div class="testimonial__role">
+                <span itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+                  <span itemprop="name">Blue Coding & Resolve Digital</span>
+                </span>
+                <span> · </span>
                 <span itemprop="author" itemscope itemtype="https://schema.org/Person">
                   <span itemprop="jobTitle">CEO</span>
                 </span>
-                <span> · </span>
-                <span itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
-                  <span itemprop="name">Blue Coding (& Resolve Digital)</span>
-                </span>
               </div>
             </div>
+            <!--
+            <img class="testimonial__avatar" src="images/david.jpg" alt="Headshot of reviewer"
+            loading="lazy" width="96" height="96" />
+          -->
           </div>
-  
           <blockquote class="testimonial__quote" itemprop="reviewBody">
-            <p>“Max was great to work with. He provided our team with a level of expertise in digital marketing that was highly valuable to us. Max led efforts related to 
-                inbound lead generation through our website, SEO and online presence, and was able to achieve important results in the improvement of our technical SEO and 
+            <p>“Max led efforts related to inbound lead generation through our website, SEO and online presence, and was able to achieve important results in the improvement of our technical SEO and 
                 general website usability.”</p>
           </blockquote>
-  
-
         </article>
-  
-        <!-- Testimonial 2 
-        <article class="card testimonial" itemscope itemtype="https://schema.org/Review">
-          <div class="testimonial__header">
-            <img
-              class="testimonial__avatar"
-              src="images/shelley.jpg"
-              alt="Headshot of reviewer"
-              loading="lazy"
-              width="96" height="96"
-            />
-            <div class="testimonial__meta">
-              <strong itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <span itemprop="name">Shelley Mossman</span>
-              </strong>
-              <div class="testimonial__role">
-                <span itemprop="author" itemscope itemtype="https://schema.org/Person">
-                  <span itemprop="jobTitle">Customer Success Manager</span>
-                </span>
-                <span> · </span>
-                <span itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
-                  <span itemprop="name">Administrative Software Applications (ASA)</span>
-                </span>
-              </div>
-            </div>
-          </div>
-  
-          <blockquote class="testimonial__quote" itemprop="reviewBody">
-            <p>“The most valuable characteristics I see in Max are his integrity, his work ethic and his perceptive understanding of others’ needs. Coworkers and clients trust his word, they appreciate his willingness to work hard to achieve the right solution,
-                 and they truly benefit from his ability to understand what the client or co-worker needs. I would highly recommend Max to become a productive and valuable member of any business team.”</p>
-          </blockquote>
-  
 
-        </article>
-  
-        <!-- Future testimonials: copy/paste another <article> block like above 
+        <!-- Slide 2 -->
+         <!--
+        <article class="card testimonial t-slide is-active"
+        itemscope itemtype="https://schema.org/Review"
+        aria-hidden="false">
+ <div class="testimonial__header">
+   <div class="testimonial__meta">
+     <strong itemprop="author" itemscope itemtype="https://schema.org/Person">
+       <span itemprop="name">Bruno Almeida</span>
+     </strong>
+     <div class="testimonial__role">
+      <span itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+        <span itemprop="name">RootstockLabs</span>
+      </span>
+       <span> · </span>
+       <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+        <span itemprop="jobTitle">CMO</span>
+      </span>
+     </div>
+   </div>
+   <img class="testimonial__avatar" src="images/bruno.jpeg" alt="Headshot of reviewer"
+   loading="lazy" width="96" height="96" />
+ </div>
+ <blockquote class="testimonial__quote" itemprop="reviewBody">
+   <p>“The most valuable characteristics I see in Max are his integrity, his work ethic and his perceptive understanding of others’ needs. Coworkers and clients trust his word.”</p>
+ </blockquote>
+</article>
+-->
 
-            
+        <!-- Add more <article class="card testimonial t-slide">…</article> as needed -->
+        <article class="card testimonial t-slide is-active"
+        itemscope itemtype="https://schema.org/Review"
+        aria-hidden="false">
+ <div class="testimonial__header">         
+   <div class="testimonial__meta">
+     <strong itemprop="author" itemscope itemtype="https://schema.org/Person">
+       <span itemprop="name">Amelia Trapp</span>
+     </strong>
+     <div class="testimonial__role">
+      <span itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+        <span itemprop="name">RootstockLabs</span>
+      </span>
+       <span> · </span>
+       <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+        <span itemprop="jobTitle">Head of Brand & Content</span>
+      </span>
+     </div>
+   </div>
+ </div>
+ <blockquote class="testimonial__quote" itemprop="reviewBody">
+   <p>“Whether it was optimising SEO, improving user journeys, or implementing complex updates under tight deadlines, Max always delivered and often went above and beyond.””</p>
+ </blockquote>
+</article>
+        <article class="card testimonial t-slide is-active"
+        itemscope itemtype="https://schema.org/Review"
+        aria-hidden="false">
+ <div class="testimonial__header">
+   <div class="testimonial__meta">
+     <strong itemprop="author" itemscope itemtype="https://schema.org/Person">
+       <span itemprop="name">Shelley Mossman</span>
+     </strong>
+     <div class="testimonial__role">
+      <span itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+        <span itemprop="name">ASA</span>
+      </span>
+       <span> · </span>
+       <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+        <span itemprop="jobTitle">Customer Success Manager</span>
+      </span>
+     </div>
+   </div>
+   <!--
+   <img class="testimonial__avatar" src="images/shelley.jpg" alt="Headshot of reviewer"
+   loading="lazy" width="96" height="96" />
+   -->
+ </div>
+ <blockquote class="testimonial__quote" itemprop="reviewBody">
+   <p>“The most valuable characteristics I see in Max are his integrity, his work ethic and his perceptive understanding of others’ needs. Coworkers and clients trust his word.”</p>
+ </blockquote>
+</article>
+
       </div>
-  
+
+      <div class="t-slider__controls">
+        <button type="button" class="t-btn" data-prev aria-label="Previous testimonials">‹</button>
+        <button type="button" class="t-btn" data-next aria-label="Next testimonials">›</button>
+      </div>
+
+      <div class="t-dots" role="tablist" aria-label="Testimonials pages"></div>
     </div>
-  </section>
-  -->
+  </div>
+</section>
+
 
 
   <div class="divider"></div>
@@ -623,25 +674,9 @@
                 <li>
                     <a href="mailto:m.a.barrera6248@gmail.com" class="email-link" aria-label="Email link">
                       <span class="sr-only">Email</span>
-                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                    <svg  aria-hidden="true" focusable="false"  height="30px" width="28px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-                         viewBox="0 0 512 512"  xml:space="preserve">
-                    <g>
-                        <path class="st0" d="M510.678,112.275c-2.308-11.626-7.463-22.265-14.662-31.054c-1.518-1.915-3.104-3.63-4.823-5.345
-                            c-12.755-12.818-30.657-20.814-50.214-20.814H71.021c-19.557,0-37.395,7.996-50.21,20.814c-1.715,1.715-3.301,3.43-4.823,5.345
-                            C8.785,90.009,3.63,100.649,1.386,112.275C0.464,116.762,0,121.399,0,126.087V385.92c0,9.968,2.114,19.55,5.884,28.203
-                            c3.497,8.26,8.653,15.734,14.926,22.001c1.59,1.586,3.169,3.044,4.892,4.494c12.286,10.175,28.145,16.32,45.319,16.32h369.958
-                            c17.18,0,33.108-6.145,45.323-16.384c1.718-1.386,3.305-2.844,4.891-4.43c6.27-6.267,11.425-13.741,14.994-22.001v-0.064
-                            c3.769-8.653,5.812-18.171,5.812-28.138V126.087C512,121.399,511.543,116.762,510.678,112.275z M46.509,101.571
-                            c6.345-6.338,14.866-10.175,24.512-10.175h369.958c9.646,0,18.242,3.837,24.512,10.175c1.122,1.129,2.179,2.387,3.112,3.637
-                            L274.696,274.203c-5.348,4.687-11.954,7.002-18.696,7.002c-6.674,0-13.276-2.315-18.695-7.002L43.472,105.136
-                            C44.33,103.886,45.387,102.7,46.509,101.571z M36.334,385.92V142.735L176.658,265.15L36.405,387.435
-                            C36.334,386.971,36.334,386.449,36.334,385.92z M440.979,420.597H71.021c-6.281,0-12.158-1.651-17.174-4.552l147.978-128.959
-                            l13.815,12.018c11.561,10.046,26.028,15.134,40.36,15.134c14.406,0,28.872-5.088,40.432-15.134l13.808-12.018l147.92,128.959
-                            C453.137,418.946,447.26,420.597,440.979,420.597z M475.666,385.92c0,0.529,0,1.051-0.068,1.515L335.346,265.221L475.666,142.8
-                            V385.92z"/>
-                    </g>
-                    </svg>                     
+                      <svg width="25" height="20" viewBox="0 0 25 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M25 2.5C25 1.125 23.875 0 22.5 0H2.5C1.125 0 0 1.125 0 2.5V17.5C0 18.875 1.125 20 2.5 20H22.5C23.875 20 25 18.875 25 17.5V2.5ZM22.5 2.5L12.5 8.75L2.5 2.5H22.5ZM22.5 17.5H2.5V5L12.5 11.25L22.5 5V17.5Z" fill="#7ACECD"/>
+                        </svg>                              
                    </a>
                 </li>
                   <li>

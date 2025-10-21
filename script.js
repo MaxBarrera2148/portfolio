@@ -549,3 +549,90 @@ for (let i = 0; i < fullText.length; i++) {
     start();
   }
 })();
+
+
+
+
+
+(function () {
+  const root = document.getElementById('recommendations');
+  if (!root) return;
+
+  const viewport = root.querySelector('.t-slider__viewport');
+  const slides = Array.from(root.querySelectorAll('.t-slide'));
+  const prev = root.querySelector('[data-prev]');
+  const next = root.querySelector('[data-next]');
+  const dotsWrap = root.querySelector('.t-dots');
+
+  // Determine visible count (1 mobile, 2 desktop)
+  const mq = window.matchMedia('(min-width: 768px)');
+  const getVisibleCount = () => (mq.matches ? 2 : 1);
+
+  let visible = getVisibleCount();
+  let page = 0;
+  let pages = Math.max(1, Math.ceil(slides.length / visible));
+
+  function buildDots() {
+    dotsWrap.innerHTML = '';
+    for (let p = 0; p < pages; p++) {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 't-dot';
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', `Go to page ${p + 1}`);
+      dot.addEventListener('click', () => goTo(p));
+      dotsWrap.appendChild(dot);
+    }
+  }
+
+  function update() {
+    // Mark active slides for current page
+    const start = page * visible;
+    const end = Math.min(start + visible, slides.length);
+
+    slides.forEach((el, idx) => {
+      const active = idx >= start && idx < end;
+      el.classList.toggle('is-active', active);
+      el.setAttribute('aria-hidden', String(!active));
+      if (active) { el.removeAttribute('inert'); } else { el.setAttribute('inert', ''); }
+    });
+
+    // Update dots
+    const dots = Array.from(dotsWrap.children);
+    dots.forEach((d, idx) => d.setAttribute('aria-selected', String(idx === page)));
+  }
+
+  function goTo(p) {
+    page = (p + pages) % pages;
+    update();
+  }
+
+  function nextPage() { goTo(page + 1); }
+  function prevPage() { goTo(page - 1); }
+
+  function onResize() {
+    const newVisible = getVisibleCount();
+    if (newVisible !== visible) {
+      visible = newVisible;
+      pages = Math.max(1, Math.ceil(slides.length / visible));
+      // Keep roughly the same first visible slide in view
+      page = Math.floor((page * (visible === 2 ? 2 : 1)) / visible);
+      buildDots();
+      update();
+    }
+  }
+
+  // Events
+  next.addEventListener('click', nextPage);
+  prev.addEventListener('click', prevPage);
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prevPage(); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); nextPage(); }
+  });
+  mq.addEventListener ? mq.addEventListener('change', onResize) : mq.addListener(onResize);
+  window.addEventListener('resize', onResize, { passive: true });
+
+  // Init
+  buildDots();
+  update();
+})();
