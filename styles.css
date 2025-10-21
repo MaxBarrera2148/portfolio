@@ -336,7 +336,7 @@ top: 12px;
 }
 .btn-sm{ padding: 8px 14px; font-weight: 700; }
 .btn-primary{ background: var(--accent); color: #fff !important;  font-weight: 800 !important; }
-.btn-primary:hover{ transform: translateY(-1px); box-shadow: 0 3px 15px rgba(0, 0, 0, 0.18); }
+.btn-primary:hover{ transform: translateY(-1px); box-shadow: var(--shadow); }
 .btn-ghost{ background: transparent; color: var(--text); border-color: var(--border); }
 .btn-ghost:hover{ background: #fff; box-shadow: var(--shadow); }
 
@@ -439,7 +439,7 @@ transition: transform 0.4s ease;
 fill: var(--accent);                /* hover/focus color */
 transition: transform 0.4s ease;
 transform: translateY(-1px);
-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.18);
+box-shadow: var(--shadow);
 
 }
 
@@ -622,14 +622,14 @@ animation: caret-blink 1s steps(1, end) infinite;
 }
 
 /* Card content */
-.testimonial { min-height: 285px; padding: 36px; }
+.testimonial { min-height: 245px; padding: 24px; }
 .testimonial__header {
   display: grid;
   
   grid-template-columns: 1fr 96px;
   gap: 12px;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 .testimonial__avatar {
   width: 96px; height: 96px; border-radius: 2%; object-fit: scale-down;
@@ -1200,7 +1200,7 @@ html[data-scroll-dir="up"]   .reveal { --enter-dir: -1; }  /* slide down into pl
 /* Optional: add slight opacity or scale change for a tactile effect */
 .footer-social a:hover svg {
   transform: translateY(-1px);
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.18);
+  box-shadow: var(--shadow);
   transition: transform 0.4s ease;
 }
 
