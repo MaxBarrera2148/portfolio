@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study: Responsive Hero Animation | Max Barrera</title>
+  <link rel="stylesheet" href="./portfolio.css" />
+</head>
+
+<body>
+  <!-- ====== Header ====== -->
+
+
+  <!-- ====== Main Content ====== -->
+  <main class="case container">
+    <header class="case-header">
+      <p class="case-eyebrow">Case Study</p>
+      <h1>Responsive Hero Animation with Performance Budget</h1>
+      <p class="case-subtitle">
+        A React hero component that delivers a smooth, animated experience on desktop while serving a static fallback for mobile and reduced-motion users — keeping LCP under 2.5s.
+      </p>
+    </header>
+
+    <div class="case-meta">
+      <span><strong>Role:</strong> Front-End Developer</span>
+      <span><strong>Focus:</strong> Performance, Accessibility, UX</span>
+      <span><strong>Tech:</strong> React.lazy, prefers-reduced-motion, SVG, Gatsby Image</span>
+    </div>
+
+    <section class="case-section">
+      <h2>The Problem</h2>
+      <p>
+        Leadership wanted a dynamic homepage hero that looked high-end, but heavy WebGL animation hurt page speed on mobile.
+        We needed a way to show movement without sacrificing performance or accessibility.
+      </p>
+
+      <!-- Optional visual -->
+      <!--
+      <figure class="case-visual">
+        <img src="../images/hero-before.png" alt="Old heavy animation" loading="lazy" />
+        <figcaption>Early WebGL prototype slowed LCP significantly on mobile.</figcaption>
+      </figure>
+      -->
+    </section>
+
+    <section class="case-section">
+      <h2>What I Built</h2>
+      <ul>
+        <li>Inline SVG headline for crisp rendering and crawlable text.</li>
+        <li>Desktop-only animation component (<code>AtomView</code>) loaded with <code>React.lazy</code> and <code>Suspense</code>.</li>
+        <li>Static image fallback for mobile and motion-sensitive users via <code>prefers-reduced-motion</code>.</li>
+        <li>Optimized with <code>gatsby-plugin-image</code> for lightweight delivery.</li>
+      </ul>
+
+      <!-- Optional visual -->
+      <!--
+      <figure class="case-visual">
+        <video autoplay muted loop playsinline>
+          <source src="../videos/hero-demo.mp4" type="video/mp4" />
+        </video>
+        <figcaption>Animation loads only on desktop; mobile receives static fallback.</figcaption>
+      </figure>
+      -->
+    </section>
+
+    <section class="case-section">
+      <h2>Impact</h2>
+      <ul>
+        <li>Improved LCP and CLS scores while maintaining motion design quality.</li>
+        <li>Better accessibility and comfort for all users.</li>
+        <li>Reduced hero load weight by over 60% on mobile devices.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- ====== Footer ====== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer-content">
+        <div class="footer-top" aria-label="Footer">
+          <div class="footer-brand">
+            <a href="/" class="brand"><span>Max<span class="accent">B</span>.</span></a>
+            <p class="tagline">Designed and coded by Max Barrera</p>
+          </div>
+          <nav class="footer-nav"></nav>
+          <div class="footer-social" aria-label="Social and contact">
+            <ul class="social-links">
+              <li><a href="mailto:m.a.barrera6248@gmail.com" aria-label="Email"><svg width="25" height="20" ...></svg></a></li>
+              <li><a href="https://github.com/max-barrera-2148" aria-label="GitHub"><svg width="22" height="22" ...></svg></a></li>
+              <li><a href="https://linkedin.com/in/max-alexander-barrera" aria-label="LinkedIn"><svg width="23" height="23" ...></svg></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <small>© Max Barrera <span id="year"></span>.</small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+      <script defer src="script.js"></script>
+</body>
+</html>
