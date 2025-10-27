@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study: Responsive Hero Animation | Max Barrera</title>
+  <link rel="stylesheet" href="./portfolio.css" />
+</head>
+
+<body>
+    <main id="main" class="case-main container">
+        <section class="case-hero">
+          <h1 class="h1">SEO-Safe CMS Migration & Rebrand</h1>
+          <p class="case-role">
+            Developer &amp; Consultant · Blue Coding / Resolve Digital · 2020–2021
+          </p>
+      
+          <div class="case-tags tags">
+            <span class="industry-tag">WordPress (ACF)</span>
+            <span class="industry-tag">301 Redirect Mapping</span>
+            <span class="industry-tag">Lead Gen SEO</span>
+            <span class="industry-tag">Landing Pages</span>
+          </div>
+      
+          <figure class="case-hero-media">
+            <img
+              src="images/case-migration-hero.jpg"
+              alt="Custom WordPress block editor view used to replace legacy CMS content"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption class="case-figcaption">
+              Flexible WordPress blocks replaced a rigid legacy CMS and let marketing ship pages on their own.
+            </figcaption>
+          </figure>
+        </section>
+      
+        <section class="case-body">
+          <div class="case-layout">
+            <article class="case-content">
+              <h2 class="h3">The problem</h2>
+              <p>
+                The team needed to move off October CMS and rebrand at the same time.
+                Traffic and inbound leads depended on organic visibility. A bad migration
+                could kill both.
+              </p>
+      
+              <h2 class="h3">What I did</h2>
+              <ul class="case-list">
+                <li>Audited URLs, content, and backlinks to understand what could not break.</li>
+                <li>Moved the site into WordPress with structured, reusable ACF blocks instead of hard-coded pages.</li>
+                <li>Rebuilt high-intent landing pages and forms with clearer messaging and faster load.</li>
+                <li>Implemented redirect mapping (301s) to keep authority and avoid SEO loss at launch.</li>
+                <li>Spun up a static marketing sub-site in Jekyll / CloudCannon for a luxury client, so they could publish without dev help.</li>
+              </ul>
+      
+              <h2 class="h3">Why it mattered</h2>
+              <p>
+                Marketing got control. They could add and tweak landing pages without opening tickets.
+                Sales got cleaner inbound. And the domain didn’t tank in search during the move.
+              </p>
+      
+              <h2 class="h3">Result</h2>
+              <p>
+                Smooth relaunch. No major ranking loss. Faster handoff from marketing concept
+                to live, tested page.
+              </p>
+            </article>
+      
+            <aside class="case-sidebar">
+              <div class="metric-block">
+                <div class="metric__value h2">0</div>
+                <div class="metric__label">critical SEO regressions at launch</div>
+              </div>
+      
+              <div class="metric-block">
+                <div class="metric__value h2">100%</div>
+                <div class="metric__label">priority URLs mapped with 301s</div>
+              </div>
+      
+              <div class="metric-block">
+                <div class="metric__value h2">Self-Serve</div>
+                <div class="metric__label">landing pages without dev in loop</div>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </main>
+      
+  
+
+  <!-- ====== Footer ====== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer-content">
+        <div class="footer-top" aria-label="Footer">
+          <div class="footer-brand">
+            <a href="/" class="brand"><span>Max<span class="accent">B</span>.</span></a>
+            <p class="tagline">Designed and coded by Max Barrera</p>
+          </div>
+          <nav class="footer-nav"></nav>
+          <div class="footer-social" aria-label="Social and contact">
+            <ul class="social-links">
+              <li><a href="mailto:m.a.barrera6248@gmail.com" aria-label="Email"><svg width="25" height="20" ...></svg></a></li>
+              <li><a href="https://github.com/max-barrera-2148" aria-label="GitHub"><svg width="22" height="22" ...></svg></a></li>
+              <li><a href="https://linkedin.com/in/max-alexander-barrera" aria-label="LinkedIn"><svg width="23" height="23" ...></svg></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <small>© Max Barrera <span id="year"></span>.</small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+      <script defer src="script.js"></script>
+</body>
+</html>

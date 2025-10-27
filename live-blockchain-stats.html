@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study: Live Blockchain Stats | Max Barrera</title>
+  <link rel="stylesheet" href="./portfolio.css" />
+</head>
+
+<body>
+
+
+  <!-- ====== Main Content ====== -->
+  <main class="case container">
+    <header class="case-header">
+      <p class="case-eyebrow">Case Study</p>
+      <h1>Live Blockchain Stats for Rootstock.io</h1>
+      <p class="case-subtitle">
+        A React component that streams live network metrics like hashrate and merged mining percentage — connected directly to blockchain data and managed via WordPress for non-technical editors.
+      </p>
+    </header>
+
+    <div class="case-meta">
+      <span><strong>Role:</strong> Front-End Developer</span>
+      <span><strong>Focus:</strong> Data Integration, Performance, SEO</span>
+      <span><strong>Tech:</strong> React, Socket.IO, WebSocket, REST, ACF (WordPress)</span>
+    </div>
+
+    <section class="case-section">
+      <h2>The Problem</h2>
+      <p>
+        Marketing wanted to show live network activity — hashrate, active accounts, merged mining percentage — on high-traffic pages. 
+        But these numbers changed constantly, and updating them manually led to stale, outdated data that hurt credibility.
+      </p>
+
+      <!-- Optional visual -->
+      <!--
+      <figure class="case-visual">
+        <img src="../images/realtime-before.png" alt="Static metrics on old homepage" loading="lazy" />
+        <figcaption>Static metrics quickly went stale, reducing trust.</figcaption>
+      </figure>
+      -->
+    </section>
+
+    <section class="case-section">
+      <h2>What I Built</h2>
+      <p>
+        I built a React component called <code>NumbersNew</code> that connects live to Rootstock’s explorer API and WebSocket feeds.
+      </p>
+
+      <ul>
+        <li>Data is fetched from WebSocket and REST endpoints for accurate, real-time updates.</li>
+        <li>Stats are managed through WordPress ACF — marketing can add or reorder metrics without dev support.</li>
+        <li>Each metric updates smoothly using lightweight count-up animations.</li>
+        <li>All sockets are cleaned up on unmount to prevent memory leaks.</li>
+      </ul>
+
+      <!-- Optional visual -->
+      <!--
+      <figure class="case-visual">
+        <video autoplay muted loop playsinline>
+          <source src="../videos/realtime-demo.mp4" type="video/mp4" />
+        </video>
+        <figcaption>Live network data updating directly on the homepage.</figcaption>
+      </figure>
+      -->
+    </section>
+
+    <section class="case-section">
+      <h2>Impact</h2>
+      <ul>
+        <li>Marketing gained full control of live stats with no code changes.</li>
+        <li>Users saw trustworthy, current network data that refreshed automatically.</li>
+        <li>Helped Rootstock pages rank better for terms like “Bitcoin sidechain hashrate” and “Rootstock merged mining.”</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- ====== Footer ====== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer-content">
+        <div class="footer-top" aria-label="Footer">
+          <div class="footer-brand">
+            <a href="/" class="brand"><span>Max<span class="accent">B</span>.</span></a>
+            <p class="tagline">Designed and coded by Max Barrera</p>
+          </div>
+          <nav class="footer-nav"></nav>
+          <div class="footer-social" aria-label="Social and contact">
+            <ul class="social-links">
+              <li><a href="mailto:m.a.barrera6248@gmail.com" aria-label="Email"><svg width="25" height="20" ...></svg></a></li>
+              <li><a href="https://github.com/max-barrera-2148" aria-label="GitHub"><svg width="22" height="22" ...></svg></a></li>
+              <li><a href="https://linkedin.com/in/max-alexander-barrera" aria-label="LinkedIn"><svg width="23" height="23" ...></svg></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <small>© Max Barrera <span id="year"></span>.</small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+    <script defer src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study: One-Click Wallet Onboarding | Max Barrera</title>
+  <link rel="stylesheet" href="./portfolio.css" />
+</head>
+
+<body>
+
+
+  <!-- ====== Main Content ====== -->
+  <main class="case">
+    <div class="container">
+    <header class="case-header">
+      <p class="case-eyebrow">Case Study</p>
+      <h1>One-Click Wallet Onboarding for Rootstock</h1>
+      <p class="case-subtitle">
+        A React component that connects directly to a user's wallet, detects if Rootstock is already added, and automatically switches or adds the network.
+      </p>
+    </header>
+
+    <div class="case-meta">
+      <span><strong>Role:</strong> Front-End Developer, Web3 Integration</span>
+      <span><strong>Focus:</strong> Onboarding, UX, Conversion</span>
+      <span><strong>Tech:</strong> React, EIP-1193, EIP-3085, EIP-3326</span>
+    </div>
+
+    <section class="case-section">
+      <h2>The Problem</h2>
+      <p>
+        Most users don’t know how to manually add a custom network in MetaMask.
+        They need to copy RPC URLs and chain IDs, which creates friction and fear of mistakes.
+        This was blocking users before they could even interact with the network.
+      </p>
+
+      <!-- Optional visual -->
+      <!--
+      <figure class="case-visual">
+        <img src="../images/wallet-before.png" alt="Old wallet setup process" loading="lazy" />
+        <figcaption>Manual setup was confusing and slowed onboarding.</figcaption>
+      </figure>
+      -->
+    </section>
+
+    <section class="case-section">
+      <h2>What I Built</h2>
+      <ul>
+        <li>Detects MetaMask (via <code>window.ethereum</code>) and prompts users to switch to Rootstock.</li>
+        <li>If Rootstock isn’t configured, it automatically adds it with the correct parameters.</li>
+        <li>Handles missing wallets gracefully by showing an install link.</li>
+        <li>Uses standard wallet APIs (EIP-1193, 3085, 3326) for full compatibility.</li>
+      </ul>
+
+      <!-- Optional visual -->
+      <!--
+      <figure class="case-visual">
+        <video src="../videos/add-network-demo.mp4" autoplay muted loop></video>
+        <figcaption>Wallet modal prompt to add Rootstock.</figcaption>
+      </figure>
+      -->
+    </section>
+
+    <section class="case-section">
+      <h2>Impact</h2>
+      <ul>
+        <li>Reduced onboarding friction and increased wallet connections.</li>
+        <li>Fewer “how do I connect?” support tickets.</li>
+        <li>Improved activation from SEO landing pages to on-chain interaction.</li>
+      </ul>
+    </section>
+</div>
+  </main>
+
+  <!-- ====== Footer ====== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer-content">
+        <div class="footer-top" aria-label="Footer">
+          <div class="footer-brand">
+            <a href="/" class="brand"><span>Max<span class="accent">B</span>.</span></a>
+            <p class="tagline">Designed and coded by Max Barrera</p>
+          </div>
+          <nav class="footer-nav"></nav>
+          <div class="footer-social" aria-label="Social and contact">
+            <ul class="social-links">
+              <li><a href="mailto:m.a.barrera6248@gmail.com" aria-label="Email"><svg width="25" height="20" ...></svg></a></li>
+              <li><a href="https://github.com/max-barrera-2148" aria-label="GitHub"><svg width="22" height="22" ...></svg></a></li>
+              <li><a href="https://linkedin.com/in/max-alexander-barrera" aria-label="LinkedIn"><svg width="23" height="23" ...></svg></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <small>© Max Barrera <span id="year"></span>.</small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+    <script defer src="script.js"></script>
+</body>
+</html>
